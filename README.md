@@ -30,7 +30,7 @@ This dataset is convenient for an NLP project since it holds a
  large amount of labeled data allowing us to verify the results of our model. The structure is also simple, which is optimal for a project that has to be implemented in such a brief timeline.
 
 ## What deep learning models do you expect to use
-We expect that some experimenting is required to get started. Due to time constraints in this course, we have to utilize our time(and Transformers :) ) and use pre-trained models. Given our project goal, we will be using a pre-trained model called [twotter-roberta-base-sentiment](https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment). This is a RoBERTa-base model trained on ~124M tweets from January 2018 to December 2021 and finetuned for sentiment analysis with the TweetEval benchmark, ideal for the task of sentiment classification. 
+We expect that some experimenting is required to get started. Due to time constraints in this course, we have to utilize our time(and Transformers :) ) and use pre-trained models. Given our project goal, we will be using a pre-trained model called [twitter-roberta-base-sentiment](https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment). This is a RoBERTa-base model trained on ~124M tweets from January 2018 to December 2021 and finetuned for sentiment analysis with the TweetEval benchmark, ideal for the task of sentiment classification. 
 
 
 
