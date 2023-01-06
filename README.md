@@ -87,6 +87,3 @@ Project Organization
 
 --------
 
-=======
-# 02476_mlops
-Repository for final project in DTU's 02476 ML Ops
