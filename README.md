@@ -2,10 +2,10 @@
 ==============================
 
 # Sentiment Classification of Tweets -- Project Description
-Halla María Hjartardóttir s212958
-Hildur Margrét Gunnarsdóttir s212951
-Rebekka Jóhannsdóttir s212963
-Þórður Örn Stefánsson s212957
+- Halla María Hjartardóttir: s212958
+- Hildur Margrét Gunnarsdóttir: s212951
+- Rebekka Jóhannsdóttir: s212963
+- Þórður Örn Stefánsson: s212957
 
 ## Overall Goal of The Project
 The overall goal of this project is to combine the learning objectives of this ML Ops into a final product. After carrying out his project we want to know how to control the production machine learning life cycle with the assistance of the tools presented in this course. For the actual machine learning aspect of this project, the goal is to use NLP to determine whether the sentiment of a tweet is negative, positive, or neutral. 
