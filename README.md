@@ -8,7 +8,7 @@
 - Þórður Örn Stefánsson: s212957
 
 ## Overall Goal of The Project
-The overall goal of this project is to combine the learning objectives of this ML Ops into a final product. After carrying out his project we want to know how to control the production machine learning life cycle with the assistance of the tools presented in this course. For the actual machine learning aspect of this project, the goal is to use NLP to determine whether the sentiment of a tweet is negative, positive, or neutral. 
+The overall goal of this project is to combine the learning objectives of this ML Ops into a final product. After carrying out this project we want to know how to control the production machine learning life cycle with the assistance of the tools presented in this course. For the actual machine learning aspect of this project, the goal is to use NLP to determine whether the sentiment of a tweet is negative, positive, or neutral. 
 
 ## What framework are you going to use (PyTorch Image Models, Transformer, Pytorch-Geometrics)
 Out of the three frameworks offered to work with, we will be using **Transformers** by the Huggingface group. This compliments our choice of project, NLP, since Transformers holds quantities of models intended for NLP tasks. 
