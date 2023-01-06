@@ -1,4 +1,4 @@
-02476_mlops_final_project
+02476 ML Ops -- Final Project
 ==============================
 
 # Sentiment Classification of Tweets -- Project Description
