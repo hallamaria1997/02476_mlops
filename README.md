@@ -87,8 +87,6 @@ Project Organization
 
 --------
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
 =======
 # 02476_mlops
-Repository for final project in DTU's ö2476 ML Ops
->>>>>>> 6a8fa18f7c645f00a873e2149fce0ec9064a142b
+Repository for final project in DTU's 02476 ML Ops
