@@ -8,12 +8,10 @@ class SentimentModel():
     def __init__(
         self,
         model_name: str = "cardiffnlp/twitter-roberta-base-sentiment-latest",
-        learning_rate: float = 5e-5,
+        learning_rate: float = 1e-4,
         batch_size: int = 32,
     ):
         super().__init__()
-        # save all hyperparameters
-        self.save_hyperparameters()
         # define the model
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.config = AutoConfig.from_pretrained(model_name)
