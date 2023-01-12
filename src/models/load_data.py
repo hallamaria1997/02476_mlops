@@ -20,19 +20,12 @@ class SentimentDataset(Dataset):
         return (self.tweets[idx], self.labels[idx])
 
 
-def train(filepath: str)-> DataLoader:
+def make_dataloader(filepath: str)-> DataLoader:
     dataset = SentimentDataset(filepath)
-    train = DataLoader(dataset, batch_size=32)
-    return train
+    dataloader = DataLoader(dataset, batch_size=32)
+    return dataloader
   
     
-def test(filepath: str)-> DataLoader:
-    dataset = SentimentDataset(filepath)
-    test = DataLoader(dataset, batch_size=32)
-    return test
- 
- 
-train_data = train('data/processed/test.csv')
 
-for tweets, labels in train_data:
-    print(tweets)
+ 
+ 
