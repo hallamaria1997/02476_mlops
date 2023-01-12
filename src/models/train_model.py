@@ -4,27 +4,11 @@ import torch
 from torch import nn
 from tqdm import tqdm
 from typing import Callable, Tuple, Union, Optional, List
-import hydra
 
 
 
-import logging
-from datetime import datetime
-
-import hydra
-import numpy as np
-import torch
-from datasets import load_metric
-from omegaconf import DictConfig, OmegaConf
-from transformers import AutoModelForSequenceClassification, Trainer, TrainingArguments
-
-import wandb
-from src import _PATH_MODELS
-from src.data.make_dataset import load_data
-
-
-from src.models.load_data import train   #fylla út fallið
-from src.models.model import  SentimentModel      #fylla út fallið
+from src.models.load_data import make_dataloader
+from src.models.model import  SentimentModel    
 
 
 @click.group()
@@ -38,14 +22,30 @@ def cli():
 def train(lr:float, epochs:int)->None:
     """main training function for the model, calls the subsequent training function"""
     model = SentimentModel()
-    train_set, _ = train(data_path="data/processed/train_csv")
+    train_set, _ = make_dataloader(data_path="data/processed/train_csv")
     criterion = nn.NLLLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 
     epochs = epochs
-    model_out, loss = training(model, train_set, criterion, optimizer, epochs=epochs)
+    training_loss = []
 
-    torch.save(model_out.state_dict(), "models/checkpoint.pth")
+    for e in tqdm(range(epochs)):
+        cum_loss = 0
+        for tweets, labels in train_set:
+            optimizer.zero_grad()
+            pred = model(tweets)
+            loss = criterion(pred, labels)
+            loss.backward()
+            optimizer.step()
+            cum_loss += loss.item()
+        
+
+
+        print('Loss in epoch ' + str(e) + ': ' +
+            str(cum_loss/len(train_set)))
+        training_loss.append(cum_loss / len(train_set))
+
+    torch.save(model.state_dict(), "models/checkpoint.pth")
     print("saved to model/checkpoint.pth")
 
     plt.figure(figsize=(10, 5))
@@ -54,40 +54,6 @@ def train(lr:float, epochs:int)->None:
     plt.xlabel("Epochs")
     plt.ylabel("Loss")
     plt.savefig("reports/figures/loss.png", dpi=200)
-
-
-def training(model: nn.Module, 
-    train_set:  torch.utils.data.DataLoader, 
-    criterion : Union[Callable, nn.Module], 
-    optimizer Optional[torch.optim.Optimizer] = None, 
-    epochs: int = 5) -> :
-    """Training function for the model
-
-    Args:
-        model (nn.Module): model to train
-        train_set (torch.utils.data.DataLoader): training set
-        criterion (nn.Module): loss function
-        optimizer (torch.optim): optimizer to use for training
-    Returns:
-        model (nn.Module): trained model
-        running_loss_l (list): list of training losses
-    """
-    pbar = tqdm(range(epochs))
-    running_loss_l = []
-    for e in pbar:
-        running_loss = 0
-        for images, labels in train_set:
-
-            optimizer.zero_grad()
-            log_ps = model(images)
-            loss = criterion(log_ps, labels)
-            loss.backward()
-            optimizer.step()
-
-            running_loss += loss.item()
-        pbar.set_postfix({"Training loss": running_loss / len(train_set)})
-        running_loss_l.append(running_loss / len(train_set))
-    return model, running_loss_l
 
 
 cli.add_command(train)
