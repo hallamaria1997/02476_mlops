@@ -33,6 +33,10 @@ data: requirements
 clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
+	
+## Train model
+train: 
+	$(PYTHON_INTERPRETER) src/models/train_model.py train
 
 ## Lint using flake8
 lint:
