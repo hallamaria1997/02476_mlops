@@ -50,11 +50,11 @@ end of the project.
 
 ### Week 1
 
-* [-] Create a git repository
-* [-] Make sure that all team members have write access to the github repository
-* [-] Create a dedicated environment for you project to keep track of your packages
-* [-] Create the initial file structure using cookiecutter
-* [-] Fill out the `make_dataset.py` file such that it downloads whatever data you need and
+* [x] Create a git repository
+* [x] Make sure that all team members have write access to the github repository
+* [x] Create a dedicated environment for you project to keep track of your packages
+* [x] Create the initial file structure using cookiecutter
+* [x] Fill out the `make_dataset.py` file such that it downloads whatever data you need and
 * [ ] Add a model file and a training script and get that running
 * [ ] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
 * [ ] Remember to comply with good coding practices (`pep8`) while doing the project
