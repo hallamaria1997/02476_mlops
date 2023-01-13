@@ -56,12 +56,12 @@ end of the project.
 * [x] Create the initial file structure using cookiecutter
 * [x] Fill out the `make_dataset.py` file such that it downloads whatever data you need and
 * [x] Add a model file and a training script and get that running
-* [HMH] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
+* [x] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
 * [HMH] Remember to comply with good coding practices (`pep8`) while doing the project
 * [HMH] Do a bit of code typing and remember to document essential parts of your code
-* [HMH] Setup version control for your data or part of your data
-* [HMG] Construct one or multiple docker files for your code
-* [HMG] Build the docker files locally and make sure they work as intended
+* [x] Setup version control for your data or part of your data
+* [x] Construct one or multiple docker files for your code
+* [x] Build the docker files locally and make sure they work as intended
 * [RJ] Write one or multiple configurations files for your experiments
 * [RJ] Used Hydra to load the configurations and manage your hyperparameters
 * [ ] When you have something that works somewhat, remember at some point to to some profiling and see if
@@ -72,13 +72,13 @@ end of the project.
 
 ### Week 2
 
-* [ ] Write unit tests related to the data part of your code
-* [ ] Write unit tests related to model construction and or model training
-* [ ] Calculate the coverage.
-* [ ] Get some continuous integration running on the github repository
-* [ ] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
-* [ ] Create a trigger workflow for automatically building your docker images
-* [ ] Get your model training in GCP using either the Engine or Vertex AI
+* [HMH] Write unit tests related to the data part of your code
+* [HMH] Write unit tests related to model construction and or model training
+* [HMH] Calculate the coverage.
+* [HMH] Get some continuous integration running on the github repository
+* [HMG] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
+* [HMG] Create a trigger workflow for automatically building your docker images
+* [HMG] Get your model training in GCP using either the Engine or Vertex AI
 * [ ] Create a FastAPI application that can do inference using your model
 * [ ] If applicable, consider deploying the model locally using torchserve
 * [ ] Deploy your model in GCP using either Functions or Run as the backend
