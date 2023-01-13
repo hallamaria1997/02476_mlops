@@ -1,7 +1,8 @@
 import torch
 from transformers import AutoModelForSequenceClassification, AutoConfig, AutoTokenizer
+from torch import nn
 
-class SentimentModel():
+class SentimentModel(nn.Module):
     "Class for Model creation"
     # The different parameters are initialized and
     # utilized through save_hyperparmeters() function
@@ -13,12 +14,10 @@ class SentimentModel():
     ):
         super().__init__()
         # define the model
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-        self.config = AutoConfig.from_pretrained(model_name)
         self.model = AutoModelForSequenceClassification.from_pretrained(
             model_name, num_labels=3
         )
 
-    def forward(self, **inputs):
-        return self.model(**inputs)
+    def forward(self, **input):
+        return self.model(**input)
     

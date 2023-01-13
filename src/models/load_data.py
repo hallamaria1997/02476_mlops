@@ -9,7 +9,7 @@ class SentimentDataset(Dataset):
     """Class to create standard format data for 
     train/test dataset"""
     def __init__(self, filepath):
-        file = pd.read_csv(filepath)
+        file = pd.read_csv(filepath, encoding='utf-8')
         self.tweets = file['text'].to_numpy()
         self.labels = file['sentiment'].to_numpy()
         
@@ -22,7 +22,7 @@ class SentimentDataset(Dataset):
 
 def make_dataloader(filepath: str)-> DataLoader:
     dataset = SentimentDataset(filepath)
-    dataloader = DataLoader(dataset, batch_size=32)
+    dataloader = DataLoader(dataset, batch_size=1)
     return dataloader
   
     
