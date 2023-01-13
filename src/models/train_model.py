@@ -1,3 +1,4 @@
+from transformers import AutoModelForSequenceClassification, AutoConfig, AutoTokenizer
 import click
 import matplotlib.pyplot as plt
 import torch
