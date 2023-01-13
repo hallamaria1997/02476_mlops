@@ -18,6 +18,6 @@ class SentimentModel(nn.Module):
             model_name, num_labels=3
         )
 
-    def forward(self, **input):
-        return self.model(**input)
+    def forward(self, tweets, att_mask):
+        return self.model(tweets, att_mask)
     
