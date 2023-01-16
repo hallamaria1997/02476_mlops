@@ -13,10 +13,10 @@ class SentimentDataset(Dataset):
         self.tweets = file['text'].tolist()
         self.att_mask = []
         self.labels = file['sentiment'].tolist()
-   
+
     def __len__(self):
-        return len(self.tweets) 
-      
+        return len(self.tweets)
+
     def __getitem__(self, idx) -> Tuple[str, int, int]:
         return (self.tweets[idx], self.att_mask[idx], self.labels[idx])
 
