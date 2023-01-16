@@ -7,14 +7,14 @@ from typing import Tuple
 
 
 class Predict():
-	"""Uses the SentimentModel with pre-trained weights to acquire prediction
-	for a given data (data_path)."""
-	def __init__(self, model_path: str = '../../models/checkpoint.pth'):
-		if model_path[-4:] != '.pth':
-			model_path += '.pth'
-		state_dict = torch.load(model_path)
-		self.model = SentimentModel()
-		self.model.load_state_dict(state_dict)
+    """Uses the SentimentModel with pre-trained weights to acquire prediction
+    for a given data (data_path)."""
+    def __init__(self, model_path: str = '../../models/checkpoint.pth'):
+        if model_path[-4:] != '.pth':
+            model_path += '.pth'
+        state_dict = torch.load(model_path)
+        self.model = SentimentModel()
+        self.model.load_state_dict(state_dict)
 
 	# prediction
 	def predict(self, tweet: str = '') -> Tuple[int, str]:
