@@ -17,8 +17,8 @@ def main(input_filepath, output_filepath):
     logger = logging.getLogger(__name__)
     logger.info('making final data set from raw data')
     # Loading Raw data
-    train_df = pd.read_csv(os.path.join(input_filepath,"train.csv"))
-    test_df = pd.read_csv(os.path.join(input_filepath,"test.csv"))
+    train_df = pd.read_csv(os.path.join(input_filepath, "train.csv"))
+    test_df = pd.read_csv(os.path.join(input_filepath, "test.csv"))
     # Dropping rows with missing data
     train_df.dropna()
     test_df.dropna()
@@ -35,12 +35,14 @@ def main(input_filepath, output_filepath):
     test_df.text = test_df.text.apply(lambda x: x.strip('\"'))
     test_df.text = test_df.text.apply(lambda x: x.strip('\''))
     # Saving processed data
-    train_df[["textID", "text", "sentiment"]].to_csv(os.path.join(output_filepath,
-                                                                "train.csv"),
-                                                    index=False)
-    test_df[["textID", "text", "sentiment"]].to_csv(os.path.join(output_filepath,
-                                                                "test.csv"),
-                                                    index=False)
+    train_df[["textID", "text", "sentiment"]].to_csv(
+        os.path.join(output_filepath,
+                     "train.csv"),
+        index=False)
+    test_df[["textID", "text", "sentiment"]].to_csv(
+        os.path.join(output_filepath,
+                     "test.csv"),
+        index=False)
 
 
 if __name__ == '__main__':
