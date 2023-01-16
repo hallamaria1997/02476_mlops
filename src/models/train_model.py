@@ -1,4 +1,3 @@
-from transformers import AutoModelForSequenceClassification, AutoConfig, AutoTokenizer
 import click
 import matplotlib.pyplot as plt
 import torch
@@ -17,12 +16,12 @@ def cli():
 
 @click.command()
 @click.option("--lr", default=1e-4, help="learning rate to use for training")
-@click.option("--epochs", default=4, help="number of epochs")
+@click.option("--epochs", default=30, help="number of epochs")
 def train(lr:float, epochs:int)->None:
     """main training function for the model, calls the subsequent training function"""
     
     model = SentimentModel()
-    train_set = make_dataloader(filepath="data/raw/train.csv")
+    train_set = make_dataloader(filepath="C:/Users/Lenovo/Documents/02476_mlops/data/raw/train.csv")
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 
@@ -43,7 +42,7 @@ def train(lr:float, epochs:int)->None:
             str(cum_loss/len(train_set)))
         training_loss.append(cum_loss / len(train_set))
 
-    torch.save(model.state_dict(), "models/checkpoint.pth")
+    torch.save(model.state_dict(), "C:/Users/Lenovo/Documents/02476_mlops/models/checkpoint.pth")
     print("saved to model/checkpoint.pth")
 
     plt.figure(figsize=(10, 5))
@@ -52,7 +51,7 @@ def train(lr:float, epochs:int)->None:
     plt.title("Training loss")
     plt.xlabel("Epochs")
     plt.ylabel("Loss")
-    plt.savefig("reports/figures/loss.png", dpi=200)
+    plt.savefig("C:/Users/Lenovo/Documents/02476_mlops/reports/figures/loss.png", dpi=200)
 
 
 cli.add_command(train)
