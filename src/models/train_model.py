@@ -7,7 +7,7 @@ from scipy.special import softmax
 import numpy as np
 
 from load_data import make_dataloader
-from model import  SentimentModel    
+from model import SentimentModel    
 
 @click.group()
 def cli():
@@ -21,7 +21,7 @@ def train(lr:float, epochs:int)->None:
     """main training function for the model, calls the subsequent training function"""
     
     model = SentimentModel()
-    train_set = make_dataloader(filepath="C:/Users/Lenovo/Documents/02476_mlops/data/raw/train.csv")
+    train_set = make_dataloader(filepath="data/raw/train.csv")
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 
@@ -42,7 +42,7 @@ def train(lr:float, epochs:int)->None:
             str(cum_loss/len(train_set)))
         training_loss.append(cum_loss / len(train_set))
 
-    torch.save(model.state_dict(), "C:/Users/Lenovo/Documents/02476_mlops/models/checkpoint.pth")
+    torch.save(model.state_dict(), "models/checkpoint.pth")
     print("saved to model/checkpoint.pth")
 
     plt.figure(figsize=(10, 5))
@@ -51,7 +51,7 @@ def train(lr:float, epochs:int)->None:
     plt.title("Training loss")
     plt.xlabel("Epochs")
     plt.ylabel("Loss")
-    plt.savefig("C:/Users/Lenovo/Documents/02476_mlops/reports/figures/loss.png", dpi=200)
+    plt.savefig("reports/figures/loss.png", dpi=200)
 
 
 cli.add_command(train)
