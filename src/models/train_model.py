@@ -33,9 +33,6 @@ def train(config: DictConfig) -> None:
 
     epochs = epochs
     training_loss = []
-
-
-    
     for e in tqdm(range(epochs)):
         cum_loss = 0
         for tweets, att_mask, labels in train_set:
@@ -49,7 +46,8 @@ def train(config: DictConfig) -> None:
         print('Loss in epoch ' + str(e) + ': ' + str(cum_loss/len(train_set)))
         training_loss.append(cum_loss / len(train_set))
 
-    torch.save(model.state_dict(), "C:/Users/Rebekka/Desktop/DTU/MLOps/02476_mlops/models/checkpoint.pth")
+    torch.save(model.state_dict(),
+               "C:/Users/Rebekka/Desktop/DTU/MLOps/02476_mlops/models/checkpoint.pth")
     print("saved to model/checkpoint.pth")
 
     plt.figure(figsize=(10, 5))
@@ -58,7 +56,8 @@ def train(config: DictConfig) -> None:
     plt.title("Training loss")
     plt.xlabel("Epochs")
     plt.ylabel("Loss")
-    plt.savefig("C:/Users/Rebekka/Desktop/DTU/MLOps/02476_mlops/reports/figures/loss.png", dpi=200)
+    plt.savefig("C:/Users/Rebekka/Desktop/DTU/MLOps/02476_mlops/reports/figures/loss.png",
+                dpi=200)
 
 
 if __name__ == "__main__":
