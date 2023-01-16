@@ -17,19 +17,19 @@ class Predict():
         self.model.load_state_dict(state_dict)
 
 	# prediction
-	def predict(self, tweet: str = '') -> Tuple[int, str]:
-		pre_train = "cardiffnlp/twitter-roberta-base-sentiment-latest"
-		tokenizer = AutoTokenizer.from_pretrained(pre_train)
-		config = AutoConfig.from_pretrained(pre_train)
-		tokens = tokenizer(tweet, padding=True, return_tensors='pt')
-		tweet_tokens = tokens.input_ids
-		att_mask = tokens.attention_mask
-		pred = self.model(tweet_tokens, att_mask)
+    def predict(self, tweet: str = '') -> Tuple[int, str]:
+        pre_train = "cardiffnlp/twitter-roberta-base-sentiment-latest"
+        tokenizer = AutoTokenizer.from_pretrained(pre_train)
+        config = AutoConfig.from_pretrained(pre_train)
+        tokens = tokenizer(tweet, padding=True, return_tensors='pt')
+        tweet_tokens = tokens.input_ids
+        att_mask = tokens.attention_mask
+        pred = self.model(tweet_tokens, att_mask)
 
-		pred_id = np.argmax(softmax(pred[0][0].detach().numpy()))
-		pred_label = config.id2label[pred_id]
+        pred_id = np.argmax(softmax(pred[0][0].detach().numpy()))
+        pred_label = config.id2label[pred_id]
 
-		return pred_id, pred_label
+        return pred_id, pred_label
 
 
 if __name__ == '__main__':
