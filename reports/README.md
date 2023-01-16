@@ -68,7 +68,7 @@ end of the project.
       you can optimize your code
 * [RJ] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
       consider running a hyperparameter optimization sweep.
-* [] Use Pytorch-lightning (if applicable) to reduce the amount of boilerplate in your code
+* [ ] Use Pytorch-lightning (if applicable) to reduce the amount of boilerplate in your code
 
 ### Week 2
 
