@@ -12,14 +12,18 @@ class SentimentDataset(Dataset):
         file = pd.read_csv(filepath, encoding='utf-8', nrows=n_rows)
         self.tweets = file['text'].tolist()
         self.att_mask = []
-        self.labels = file['sentiment'].tolist()    
+        self.labels = file['sentiment'].tolist()
+   
     def __len__(self):
-        return len(self.tweets)        
+        return len(self.tweets) 
+      
     def __getitem__(self, idx) -> Tuple[str, int, int]:
         return (self.tweets[idx], self.att_mask[idx], self.labels[idx])
 
 
-def make_dataloader(filepath: str, batch_size: int = 32, n_rows: int = 320) -> DataLoader:
+def make_dataloader(filepath: str,
+                    batch_size: int = 32,
+                    n_rows: int = 320) -> DataLoader:
     dataset = SentimentDataset(filepath, n_rows)
     tokenizer = AutoTokenizer.from_pretrained(
         "cardiffnlp/twitter-roberta-base-sentiment-latest")
@@ -28,7 +32,7 @@ def make_dataloader(filepath: str, batch_size: int = 32, n_rows: int = 320) -> D
     for i in range(len(dataset)):
         if type(dataset.tweets[i]) != str:
             dataset.tweets[i] = ''
-        dataset.labels[i] = torch.tensor(config.label2id[dataset.labels[i]])   
+        dataset.labels[i] = torch.tensor(config.label2id[dataset.labels[i]])
     tokens = tokenizer(dataset.tweets, padding=True, return_tensors='pt')
     dataset.tweets = tokens.input_ids
     dataset.att_mask = tokens.attention_mask
