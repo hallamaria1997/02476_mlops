@@ -72,14 +72,14 @@ end of the project.
 
 ### Week 2
 
-* [HMH] Write unit tests related to the data part of your code
-* [HMH] Write unit tests related to model construction and or model training
+* [x] Write unit tests related to the data part of your code
+* [x] Write unit tests related to model construction and (or model training)
 * [HMH] Calculate the coverage.
 * [HMH] Get some continuous integration running on the github repository
 * [HMG] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
 * [HMG] Create a trigger workflow for automatically building your docker images
 * [HMG] Get your model training in GCP using either the Engine or Vertex AI
-* [ ] Create a FastAPI application that can do inference using your model
+* [ÞÖS] Create a FastAPI application that can do inference using your model
 * [ ] If applicable, consider deploying the model locally using torchserve
 * [ ] Deploy your model in GCP using either Functions or Run as the backend
 
