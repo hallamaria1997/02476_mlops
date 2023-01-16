@@ -16,6 +16,7 @@ class Predict():
 		self.model = SentimentModel()
 		self.model.load_state_dict(state_dict)
 
+	# prediction
 	def predict(self, tweet: str = '') -> Tuple[int, str]:
 		pre_train = "cardiffnlp/twitter-roberta-base-sentiment-latest"
 		tokenizer = AutoTokenizer.from_pretrained(pre_train)
