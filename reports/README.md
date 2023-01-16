@@ -62,8 +62,8 @@ end of the project.
 * [x] Setup version control for your data or part of your data
 * [x] Construct one or multiple docker files for your code
 * [x] Build the docker files locally and make sure they work as intended
-* [RJ] Write one or multiple configurations files for your experiments
-* [RJ] Used Hydra to load the configurations and manage your hyperparameters
+* [x] Write one or multiple configurations files for your experiments
+* [x] Used Hydra to load the configurations and manage your hyperparameters
 * [ ] When you have something that works somewhat, remember at some point to to some profiling and see if
       you can optimize your code
 * [ ] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
@@ -103,18 +103,14 @@ end of the project.
 ### Question 1
 > **Enter the group number you signed up on <learn.inside.dtu.dk>**
 >
-> Answer:
+> Answer: Awesome 10
 
 --- question 1 fill here ---
 
 ### Question 2
 > **Enter the study number for each member in the group**
 >
-> Example:
->
-> *sXXXXXX, sXXXXXX, sXXXXXX*
->
-> Answer:
+> Answer: s212963, s212958, s212951, s212957
 
 --- question 2 fill here ---
 
