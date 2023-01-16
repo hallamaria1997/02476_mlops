@@ -1,4 +1,3 @@
-from __init__ import _PATH_DATA,_TEST_ROOT,_PROJECT_ROOT
 import sys
 sys.path.insert(1,'src/models')
 from model import SentimentModel

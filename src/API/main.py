@@ -1,5 +1,7 @@
 from fastapi import FastAPI, BackgroundTasks
 from src.models.predict_model import Predict
+from typing import Tuple
+
 
 app = FastAPI()
 p = Predict()
@@ -10,7 +12,7 @@ def save_tweet(tweet: str, pred_id: int, pred_label: str):
 
 @app.get("/")
 def root():
-   return {"Hello": "World"}
+    return {"Hello": "World"}
 
 @app.get("/predict/{tweet}")
 def predict(tweet: str, background_tasks: BackgroundTasks):

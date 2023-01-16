@@ -2,6 +2,7 @@ import torch
 from transformers import AutoModelForSequenceClassification
 from torch import nn
 
+
 class SentimentModel(nn.Module):
     "Class for Model creation"
     # The different parameters are initialized and
@@ -18,6 +19,5 @@ class SentimentModel(nn.Module):
             model_name, num_labels=3
         )
 
-    def forward(self, tweets, att_mask):
+    def forward(self, tweets: torch.Tensor, att_mask: torch.Tensor) -> any:
         return self.model(tweets, att_mask)
-    
