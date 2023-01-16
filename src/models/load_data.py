@@ -3,7 +3,7 @@ import os
 import pandas as pd
 from transformers import AutoConfig, AutoTokenizer
 import torch
-
+from typing import Callable, Tuple, Union, Optional, List
 from torch.utils.data import Dataset, DataLoader
 
 
@@ -20,7 +20,7 @@ class SentimentDataset(Dataset):
     def __len__(self):
         return len(self.tweets)
         
-    def __getitem__(self, idx) :
+    def __getitem__(self, idx) -> tuple[str,int,int]:
         return (self.tweets[idx], self.att_mask[idx], self.labels[idx])
 
 

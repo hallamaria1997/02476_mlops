@@ -11,6 +11,7 @@ from model import SentimentModel
 from typing import Callable, Tuple, Union, Optional, List
 import hydra
 
+
 @hydra.main(config_path="config", config_name='default_config.yaml')
 
 def train(config:DictConfig)->None:
@@ -26,6 +27,7 @@ def train(config:DictConfig)->None:
 
     model = SentimentModel()
     train_set = make_dataloader(filepath="data/raw/train.csv",batch_size = batch_size, n_rows=n_rows )
+    
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 
@@ -47,6 +49,7 @@ def train(config:DictConfig)->None:
         training_loss.append(cum_loss / len(train_set))
 
     torch.save(model.state_dict(), "models/checkpoint.pth")
+    
     print("saved to model/checkpoint.pth")
 
     plt.figure(figsize=(10, 5))
@@ -56,7 +59,7 @@ def train(config:DictConfig)->None:
     plt.xlabel("Epochs")
     plt.ylabel("Loss")
     plt.savefig("reports/figures/loss.png", dpi=200)
-
+    
 
 if __name__ == "__main__":
     train()

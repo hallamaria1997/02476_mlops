@@ -3,6 +3,7 @@ import torch
 from scipy.special import softmax
 import numpy as np
 from transformers import AutoTokenizer, AutoConfig
+from typing import Callable, Tuple, Union, Optional, List
 
 class Predict():
 	"""
@@ -16,7 +17,7 @@ class Predict():
 		self.model = SentimentModel()
 		self.model.load_state_dict(state_dict)
 
-	def predict(self, tweet: str=''):
+	def predict(self, tweet: str='')-> Tuple[int, str]:	
 		tokenizer = AutoTokenizer.from_pretrained("cardiffnlp/twitter-roberta-base-sentiment-latest")
 		config = AutoConfig.from_pretrained( "cardiffnlp/twitter-roberta-base-sentiment-latest")
 		
