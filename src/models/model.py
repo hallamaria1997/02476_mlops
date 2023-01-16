@@ -1,7 +1,7 @@
 import torch
 from transformers import AutoModelForSequenceClassification
 from torch import nn
-from typing import Callable, Tuple, Union, Optional, List
+
 
 class SentimentModel(nn.Module):
     "Class for Model creation"
@@ -19,6 +19,5 @@ class SentimentModel(nn.Module):
             model_name, num_labels=3
         )
 
-    def forward(self, tweets:torch.Tensor, att_mask:torch.Tensor)-> any:
+    def forward(self, tweets: torch.Tensor, att_mask: torch.Tensor) -> any:
         return self.model(tweets, att_mask)
-    
