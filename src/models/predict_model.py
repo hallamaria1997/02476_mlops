@@ -1,36 +1,33 @@
-from model import SentimentModel
-import torch, click
-from load_data import make_dataloader
+from src.models.model import SentimentModel
+import torch
 from scipy.special import softmax
 import numpy as np
+from transformers import AutoTokenizer, AutoConfig
+from typing import Callable, Tuple, Union, Optional, List
 
-@click.command()
-@click.argument('model_path', default='models/checkpoint.pth')
-@click.argument('data_path', default='data/processed/test.csv')
-def predict(model_path: str, data_path: str):
+class Predict():
 	"""
 		Uses the SentimentModel with pre-trained weights to acquire prediction
 		for a given data (data_path).
 	"""
-	if model_path[-4:] != '.pth':
-		model_path += '.pth'
-	
-	state_dict = torch.load(model_path)
-	test_set = make_dataloader(data_path)
-	model = SentimentModel()
-	model.load_state_dict(state_dict)
+	def __init__(self, tweet: str='', model_path:str = 'models/checkpoint.pth'):
+		if model_path[-4:] != '.pth':
+			model_path += '.pth'
+		state_dict = torch.load(model_path)
+		self.model = SentimentModel()
+		self.model.load_state_dict(state_dict)
+		self.tweet = tweet
 
-	correct, total = 0, 0
-	for tweets, att_mask, labels in test_set:		
-		preds = model(tweets, att_mask)
-		print(np.argmax(softmax(preds[0][0].detach().numpy())))
-		pred_labels = np.argmax(softmax(preds[0][0].detach().numpy()))
+	def predict(self)-> Tuple[int, str]:	
+		tokenizer = AutoTokenizer.from_pretrained("cardiffnlp/twitter-roberta-base-sentiment-latest")
+		config = AutoConfig.from_pretrained( "cardiffnlp/twitter-roberta-base-sentiment-latest")
 		
-		correct += (pred_labels == labels).sum().item()
-		total += labels.numel()
+		tokens = tokenizer(self.tweet, padding=True, return_tensors='pt')
+		tweet_tokens = tokens.input_ids
+		att_mask = tokens.attention_mask
+		pred = self.model(tweet_tokens, att_mask)
 
-	print(labels)
-	print('Test set accuracy:', correct/total)
+		pred_id = np.argmax(softmax(pred[0][0].detach().numpy()))
+		pred_label = config.id2label[pred_id]
 
-if __name__ == '__main__':
-    predict()
+		return pred_id, pred_label

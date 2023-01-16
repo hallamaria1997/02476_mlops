@@ -5,23 +5,29 @@ from torch import nn
 from tqdm import tqdm
 from scipy.special import softmax
 import numpy as np
-
+from omegaconf import DictConfig, OmegaConf
 from load_data import make_dataloader
 from model import SentimentModel    
-
-@click.group()
-def cli():
-    pass
+from typing import Callable, Tuple, Union, Optional, List
+import hydra
 
 
-@click.command()
-@click.option("--lr", default=1e-4, help="learning rate to use for training")
-@click.option("--epochs", default=30, help="number of epochs")
-def train(lr:float, epochs:int)->None:
+@hydra.main(config_path="config", config_name='default_config.yaml')
+
+def train(config:DictConfig)->None:
     """main training function for the model, calls the subsequent training function"""
-    
+    print(f"configuration: \n {OmegaConf.to_yaml(config)}")
+    hyparams = config.experiment
+    #torch.manual_seed(hyparams["seed"])
+    epochs = hyparams['n_epochs']
+    lr = hyparams['lr']
+    batch_size = hyparams['batch_size']
+    n_rows = hyparams['n_rows']
+
+
     model = SentimentModel()
-    train_set = make_dataloader(filepath="data/raw/train.csv")
+    train_set = make_dataloader(filepath="data/raw/train.csv",batch_size = batch_size, n_rows=n_rows )
+    
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 
@@ -43,6 +49,7 @@ def train(lr:float, epochs:int)->None:
         training_loss.append(cum_loss / len(train_set))
 
     torch.save(model.state_dict(), "models/checkpoint.pth")
+    
     print("saved to model/checkpoint.pth")
 
     plt.figure(figsize=(10, 5))
@@ -52,9 +59,7 @@ def train(lr:float, epochs:int)->None:
     plt.xlabel("Epochs")
     plt.ylabel("Loss")
     plt.savefig("reports/figures/loss.png", dpi=200)
-
-
-cli.add_command(train)
+    
 
 if __name__ == "__main__":
-    cli()
+    train()
