@@ -11,7 +11,7 @@ class SentimentDataset(Dataset):
     """Class to create standard format data for 
     train/test dataset"""
     def __init__(self, filepath):
-        file = pd.read_csv(filepath, encoding='utf-8', nrows=320)
+        file = pd.read_csv(filepath, encoding='utf-8', nrows=3200)
         self.tweets = file['text'].tolist()
         self.att_mask = []
         self.labels = file['sentiment'].tolist()
