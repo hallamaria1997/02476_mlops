@@ -1,5 +1,5 @@
 import torch
-from transformers import AutoModelForSequenceClassification, AutoConfig, AutoTokenizer
+from transformers import AutoModelForSequenceClassification
 from torch import nn
 
 class SentimentModel(nn.Module):
