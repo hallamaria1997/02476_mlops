@@ -1,0 +1,3 @@
+# @package _group_
+n_epochs: 1
+lr: 1e-4
