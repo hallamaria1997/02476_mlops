@@ -14,5 +14,5 @@ def root():
 
 @app.get("/predict/{tweet}")
 def predict(tweet: str) -> Tuple[int, str]:
-	pred_id, pred_label = p.predict(tweet=tweet)
-	return {"pred_id": str(pred_id), "pred_label": pred_label}
+    pred_id, pred_label = p.predict(tweet=tweet)
+    return {"pred_id": str(pred_id), "pred_label": pred_label}
