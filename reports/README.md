@@ -74,7 +74,7 @@ end of the project.
 
 * [x] Write unit tests related to the data part of your code
 * [x] Write unit tests related to model construction and or model training
-* [HMH] Calculate the coverage.
+* [x] Calculate the coverage.
 * [x] Get some continuous integration running on the github repository
 * [HMG] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
 * [HMG] Create a trigger workflow for automatically building your docker images
