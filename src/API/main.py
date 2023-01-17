@@ -6,11 +6,11 @@ from src.models.predict_model import Predict
 
 app = FastAPI()
 
-
-if sys.argv[1] == 'False':
-    p = Predict(model_path='../../models/checkpoint.pth')
-else:
-    p = Predict()
+if os.path.exists('models/checkpoint.pth'):
+    if sys.argv[1] == 'False':
+        p = Predict(model_path='../../models/checkpoint.pth')
+    else:
+        p = Predict()
 
 
 def save_tweet(tweet: str, pred_id: int, pred_label: str,
