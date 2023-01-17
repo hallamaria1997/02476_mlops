@@ -1,0 +1,10 @@
+
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/tester', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/tester']
