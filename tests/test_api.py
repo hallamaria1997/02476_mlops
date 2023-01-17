@@ -3,15 +3,16 @@ from src.API.main import app, save_tweet
 import pytest
 import os
 
-client = TestClient(app)
+if os.path.exists('models/checkpoint.pth'):
+	client = TestClient(app)
 
-@pytest.mark.skipif(not os.path.exists('modelss/checkpoint.pth'), reason="Checkpoint not found")
+@pytest.mark.skipif(not os.path.exists('models/checkpoint.pth'), reason="Checkpoint not found")
 def test_root():
     response = client.get('/')
     assert response.status_code == 200
     assert response.json() == {'message': 'Call /predict/<tweet> to get a prediction.'}
 
-@pytest.mark.skipif(not os.path.exists('modelss/checkpoint.pth'), reason="Checkpoint not found")
+@pytest.mark.skipif(not os.path.exists('models/checkpoint.pth'), reason="Checkpoint not found")
 def test_save_tweet():
 	predictions_path = 'src\\api\\'
 	with open(predictions_path + 'predictions.csv', 'r') as file:
@@ -35,7 +36,7 @@ def test_save_tweet():
 	assert last_line.split(',')[0] == 'testing that this tweet will be saved'
 	assert n_lines_after == n_lines_before + 1
 
-@pytest.mark.skipif(not os.path.exists('modelss/checkpoint.pth'), reason="Checkpoint not found")
+@pytest.mark.skipif(not os.path.exists('models/checkpoint.pth'), reason="Checkpoint not found")
 def test_empty_tweet():
 	response = client.get('/predict/')
 	assert response.status_code == 404
