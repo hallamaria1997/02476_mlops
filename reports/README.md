@@ -105,14 +105,11 @@ end of the project.
 >
 > Answer: Awesome 10
 
---- question 1 fill here ---
 
 ### Question 2
 > **Enter the study number for each member in the group**
 >
 > Answer: s212963, s212958, s212951, s212957
-
---- question 2 fill here ---
 
 ### Question 3
 > **What framework did you choose to work with and did it help you complete the project?**
