@@ -88,3 +88,4 @@ models/
 
 # Mypy cache
 .mypy_cache/
+/data
