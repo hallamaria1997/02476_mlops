@@ -13,8 +13,8 @@ else:
     p = Predict()
 
 
-def save_tweet(tweet: str, pred_id: int, pred_label: str, 
-                file_path: str = '') -> None:
+def save_tweet(tweet: str, pred_id: int, pred_label: str,
+               file_path: str = '') -> None:
     """Saves the received tweet to a database, along with the predicted
     id and label."""
     with open(file_path + 'predictions.csv', 'a') as file:
