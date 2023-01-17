@@ -1,10 +1,12 @@
 
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer', '.']
+  args: ['build', '-f', 'trainer.dockerfile', '.', '-t', 'gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer:latest']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer']
+  args: ['push', 'gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer:latest']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/tester', '.']
+  args: ['build', '-f', 'tester.dockerfile', '.', '-t', 'gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/tester:latest']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/tester']
+  args: ['push', 'gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/tester:latest']
+
+
