@@ -7,7 +7,7 @@ import os
 
 app = FastAPI()
 
-if os.path.exists('models/checkpoint.pth'):
+if os.path.exists('../../models/checkpoint.pth'):
     if sys.argv[1] == 'False':
         p = Predict(model_path='../../models/checkpoint.pth')
     else:
