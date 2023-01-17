@@ -27,10 +27,10 @@ def train(config: DictConfig) -> None:
 
     wandb.init(mode=config.experiment.wandb.mode)
 
-    train_data = make_dataloader(filepath="C:/Users/Lenovo/Documents/02476_mlops/data/raw/train.csv",
+    train_data = make_dataloader(filepath="/data/raw/train.csv",
                                         batch_size=batch_size,
                                         n_rows=n_rows)
-    val_data = make_dataloader(filepath="C:/Users/Lenovo/Documents/02476_mlops/data/raw/test.csv",
+    val_data = make_dataloader(filepath="/data/raw/test.csv",
                                         batch_size=batch_size,
                                         n_rows=n_rows)
 

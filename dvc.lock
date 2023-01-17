@@ -1,0 +1,12 @@
+schema: '2.0'
+stages:
+  process_data:
+    cmd: python src/data/make_dataset.py data/raw data/processed
+    deps:
+    - path: data/raw
+      md5: 6e799e4d262bff4fa66042b9f6dd8d2c.dir
+      size: 3815227
+      nfiles: 3
+    - path: src/data/make_dataset.py
+      md5: 49b6a7867792ca14886e25348ceacb07
+      size: 2310

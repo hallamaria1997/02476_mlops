@@ -30,4 +30,4 @@ RUN pip install -r requirements.txt --no-cache-dir
 
 # naming as entrypoint
 
-ENTRYPOINT ["python", "-u", "src/models/train_model.py", "train"]
+ENTRYPOINT ["python", "-u", "src/models/train_model.py", "experiment=exp3"]
