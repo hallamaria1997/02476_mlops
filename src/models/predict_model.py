@@ -9,7 +9,7 @@ from typing import Tuple
 class Predict():
     """Use the SentimentModel with pretrained weights (model_path)
     to predict the sentiment of a tweet."""
-    def __init__(self, model_path: str = '../../models/checkpoint.pth'):
+    def __init__(self, model_path: str = 'models/checkpoint.pth'):
         if model_path[-4:] != '.pth':
             model_path += '.pth'
         state_dict = torch.load(model_path)
