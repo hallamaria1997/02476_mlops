@@ -8,3 +8,5 @@ steps:
   args: ['build', '-f', 'tester.dockerfile', '.', '-t', 'tester:latest']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'tester:latest']
+
+
