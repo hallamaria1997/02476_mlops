@@ -2,6 +2,7 @@ from fastapi import FastAPI, BackgroundTasks
 import uvicorn
 import sys
 from src.models.predict_model import Predict
+import os
 
 
 app = FastAPI()
