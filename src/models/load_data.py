@@ -37,5 +37,5 @@ def make_dataloader(filepath: str,
     dataset.tweets = tokens.input_ids
     dataset.att_mask = tokens.attention_mask
     # dataset.tweets =  [tokens.input_ids, tokens.attention_mask]
-    dataloader = DataLoader(dataset, batch_size=batch_size)
+    dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
     return dataloader
