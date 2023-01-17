@@ -6,19 +6,23 @@ from omegaconf import DictConfig, OmegaConf
 from load_data import make_dataloader
 from model import SentimentModel
 import hydra
+import wandb
 
 
 @hydra.main(config_path="config", config_name='default_config.yaml')
 def train(config: DictConfig) -> None:
     """main training function for the model,
     calls the subsequent training function"""
+
     print(f"configuration: \n {OmegaConf.to_yaml(config)}")
-    hyparams = config.experiment
+    hyparams = config.experiment.hyper_parameters
     # torch.manual_seed(hyparams["seed"])
     epochs = hyparams['n_epochs']
     lr = hyparams['lr']
     batch_size = hyparams['batch_size']
     n_rows = hyparams['n_rows']
+
+    wandb.init(mode=config.experiment.wandb.mode)
 
     model = SentimentModel()
     train_set = make_dataloader(filepath="data/raw/train.csv",
@@ -29,7 +33,6 @@ def train(config: DictConfig) -> None:
 
     epochs = epochs
     training_loss = []
-
     for e in tqdm(range(epochs)):
         cum_loss = 0
         for tweets, att_mask, labels in train_set:
