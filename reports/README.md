@@ -74,7 +74,7 @@ end of the project.
 
 * [x] Write unit tests related to the data part of your code
 * [x] Write unit tests related to model construction and or model training
-* [HMH] Calculate the coverage.
+* [x] Calculate the coverage.
 * [x] Get some continuous integration running on the github repository
 * [HMG] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
 * [HMG] Create a trigger workflow for automatically building your docker images
@@ -105,14 +105,11 @@ end of the project.
 >
 > Answer: Awesome 10
 
---- question 1 fill here ---
 
 ### Question 2
 > **Enter the study number for each member in the group**
 >
 > Answer: s212963, s212958, s212951, s212957
-
---- question 2 fill here ---
 
 ### Question 3
 > **What framework did you choose to work with and did it help you complete the project?**
