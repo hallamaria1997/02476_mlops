@@ -7,8 +7,8 @@ from typing import Tuple
 
 
 class Predict():
-    """Uses the SentimentModel with pre-trained weights to acquire prediction
-    for a given data (data_path)."""
+    """Use the SentimentModel with pretrained weights (model_path)
+    to predict the sentiment of a tweet."""
     def __init__(self, model_path: str = '../../models/checkpoint.pth'):
         if model_path[-4:] != '.pth':
             model_path += '.pth'
@@ -18,6 +18,8 @@ class Predict():
 
     # prediction
     def predict(self, tweet: str = '') -> Tuple[int, str]:
+        """Uses the pre-trained model to predict the sentiment of the
+        tweet."""
         pre_train = "cardiffnlp/twitter-roberta-base-sentiment-latest"
         tokenizer = AutoTokenizer.from_pretrained(pre_train)
         config = AutoConfig.from_pretrained(pre_train)
@@ -33,4 +35,4 @@ class Predict():
 
 
 if __name__ == '__main__':
-    print('')
+    pass

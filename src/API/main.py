@@ -26,7 +26,8 @@ def predict(tweet: str, background_tasks: BackgroundTasks):
         tweet (string). Inserted as a parameter in the URL.
     Returns: 
         pred_id (int): A numeral representation of the class (0, 1 or 2).
-        pred_label (string): A text representation of the class (negative, neutral, positive)."""
+        pred_label (string): A text representation of the class
+        (negative, neutral, positive)."""
     tweet = tweet.replace(',', '')
     pred_id, pred_label = p.predict(tweet=tweet)
     background_tasks.add_task(save_tweet, tweet, pred_id, pred_label)
