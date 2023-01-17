@@ -1,7 +1,7 @@
 
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-f', 'gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer.dockerfile', '.', '-t', 'tester:latest']
+  args: ['build', '-f', 'gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer.dockerfile', '.', '-t', 'trainer:latest']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer']
 - name: 'gcr.io/cloud-builders/docker'
