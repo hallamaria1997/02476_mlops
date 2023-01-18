@@ -22,17 +22,18 @@ def train(config: DictConfig) -> None:
     lr = hyparams['lr']
     batch_size = hyparams['batch_size']
     n_rows = hyparams['n_rows']
-    
-    model=SentimentModel()
 
-    wandb.init(mode=config.experiment.wandb.mode, config = config.experiment.hyper_parameters)
+    model = SentimentModel()
+
+    wandb.init(mode=config.experiment.wandb.mode,
+               config = config.experiment.hyper_parameters)
 
     train_data = make_dataloader(filepath="/data/raw/train.csv",
-                                        batch_size=batch_size,
-                                        n_rows=n_rows)
+                                batch_size=batch_size,
+                                n_rows=n_rows)
     val_data = make_dataloader(filepath="/data/raw/test.csv",
-                                        batch_size=batch_size,
-                                        n_rows=n_rows)
+                               batch_size=batch_size,
+                               n_rows=n_rows)
 
     model = SentimentModel()
     wandb.watch(model, log_freq=100)
@@ -43,17 +44,19 @@ def train(config: DictConfig) -> None:
         "epochs": epochs
     }
     wandb_logger = WandbLogger(
-        project=config.experiment.wandb.model_dir, entity=config.experiment.wandb.entity, config=config_wandb
+        project=config.experiment.wandb.model_dir,
+        entity=config.experiment.wandb.entity,
+        config=config_wandb
     )
-    
+
     checkpoint_callback = ModelCheckpoint(
         dirpath="./models", monitor="val_loss", mode="min"
     )
-    
+ 
     early_stopping_callback = EarlyStopping(
         monitor="val_loss", patience=3, verbose=True, mode="min"
     )
-    
+
     trainer = Trainer(
         callbacks=[checkpoint_callback, early_stopping_callback],
         max_epochs=epochs,
@@ -62,11 +65,12 @@ def train(config: DictConfig) -> None:
         logger=wandb_logger,
         default_root_dir=to_absolute_path(config.experiment.wandb.model_dir)
     )
-    
+
     trainer.fit(model, train_dataloaders=train_data, val_dataloaders=val_data)
-    
+
     torch.save(model.state_dict(), "/models/checkpoint.pth")
     print("saved to model/checkpoint.pth")
+
 
 if __name__ == "__main__":
     train()
