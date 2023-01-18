@@ -42,6 +42,7 @@ Project Organization
     ├── LICENSE
     ├── Makefile           <- Makefile with commands like `make data` or `make train`
     ├── README.md          <- The top-level README for developers using this project.
+    ├── dvc.yaml           <- 
     ├── data
     │   ├── external       <- Data from third party sources.
     │   ├── interim        <- Intermediate data that has been transformed.
@@ -95,6 +96,11 @@ Project Organization
     │   └── API            <- Scripts to create FastAPI
     │       └── main.py
     │       └── predictions.csv
+    ├── tests                <- 
+    │   ├── __init__.py
+    │   ├── _test_api.py
+    │   ├── test_data.py
+    │   └── test_model.py
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 
