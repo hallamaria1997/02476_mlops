@@ -152,9 +152,8 @@ end of the project.
 > *From the cookiecutter template we have filled out the ... , ... and ... folder. We have removed the ... folder*
 > *because we did not use any ... in our project. We have added an ... folder that contains ... for running our*
 > *experiments.*
-> Answer:
-
---- question 5 fill here ---
+> 
+> Answer: We initialized the git repo using cookiecutter template at the beginning of the project work. We did not manage to fill out every folder of the template but managed to make good use of the structure. We didn't use the notebooks, references nor docs folders but filled out entire or subsets of all other folders. We had to add .dvc/ folder for Data Version Control, .github/ folder to manage the workflows of Github, tests/ to write the unit tests on our source code and in the src/model/ folder we had to add a config folder to manage our experiments and the outputs from WandB. The overall structure of the code follows the standard format, source code is stored under src and the data is managed in the data folder through DVC. The model, training_model,  predict_model and load_data is all located in src/models and the model is saved under models/once the training is done.
 
 ### Question 6
 
@@ -265,10 +264,7 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 >
 > Answer length: 50-100 words.
 >
-> Example:
-> *We used a simple argparser, that worked in the following way: python my_script.py --lr 1e-3 --batch_size 25*
->
-> Answer:
+> Answer: To make it easier to configure our experiments, we used config files. Hydra is the configuration tool that we used; it keeps track of hyperparameters as well as wandb parameters. Each experiment file is located in the following folder: src/models/config/experiment and, in order to try out different experiments, the following must be typed into the terminal: python model train.py experiment=exp3
 
 --- question 12 fill here ---
 
