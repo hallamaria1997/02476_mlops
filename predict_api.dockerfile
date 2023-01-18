@@ -31,7 +31,7 @@ RUN pip install 'dvc[gs]'
 RUN dvc init --no-scm
 RUN dvc remote add -d myremote gs://trained-twitter-model/
 
-RUN dvc pull --remote remote_model -v
+RUN dvc pull -v
 COPY models/ models/
 
 COPY src/API/main.py src/API/main.py
