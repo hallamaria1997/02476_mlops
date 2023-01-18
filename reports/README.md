@@ -64,11 +64,11 @@ end of the project.
 * [x] Build the docker files locally and make sure they work as intended
 * [x] Write one or multiple configurations files for your experiments
 * [x] Used Hydra to load the configurations and manage your hyperparameters
-* [RJ] When you have something that works somewhat, remember at some point to to some profiling and see if
+* [x] When you have something that works somewhat, remember at some point to to some profiling and see if
       you can optimize your code
-* [RJ] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
+* [x] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
       consider running a hyperparameter optimization sweep.
-* [ ] Use Pytorch-lightning (if applicable) to reduce the amount of boilerplate in your code
+* [x] Use Pytorch-lightning (if applicable) to reduce the amount of boilerplate in your code
 
 ### Week 2
 
@@ -120,9 +120,7 @@ end of the project.
 > *We used the third-party framework ... in our project. We used functionality ... and functionality ... from the*
 > *package to do ... and ... in our project*.
 >
-> Answer:
-
---- question 3 fill here ---
+> Answer: We used Transformers for our Twitter sentiment classification model. Transformers provides a pre-trained model called cardiffnlp/twitter-roberta-base-sentiment-latest which is trained to assess the sentiment of tweets. We used this model as our base and performed some training on the last layer with data from Kaggle. Transformers helped us a great deal with the documentation and tutorials for their specific models. We used the Transformers Tokenizer to cast each tweet to tensors of input id and attention mask. The input id creates a tensor that scores each word of the tweet and appends to a tensor and the attention mask is a tensor that indicates the importance of each word(0 or 1). We also used the Transformers Config of the model to cast labels between keys and values(0-neutral). Finally, we used Transformers AutoModelForSequenceClassification to provide a classification element to the output of the model, using 3 classes. Overall the framework reduced the time required to train an efficient model along with the methods of the model supplying necessary aspects for evaluating the model.
 
 ## Coding environment
 
@@ -184,9 +182,7 @@ end of the project.
 > *In total we have implemented X tests. Primarily we are testing ... and ... as these the most critical parts of our*
 > *application but also ... .*
 >
-> Answer:
-
---- question 7 fill here ---
+> Answer: In total, we have implemented 6 tests. Primarily we were testing the data preprocessing and loading along with the model as it is crucial that our model is created correctly and fed data in the correct format. We tested the shape of the data given the batch size for both the training and validation. We also tested that a batch contains all labels. For the model, we tested that the model was created correctly by checking the type and that the output shape was correct given certain input shapes.
 
 ### Question 8
 
@@ -199,9 +195,7 @@ end of the project.
 > *The total code coverage of code is X%, which includes all our source code. We are far from 100% coverage of our **
 > *code and even if we were then...*
 >
-> Answer:
-
---- question 8 fill here ---
+> Answer: The total code coverage is 69% of our src code, the part that drags the percentage down is the training part. The data, model, and tests are covered 100% but the Pytorch Lighting Trainer module and therefore training process is not included in the coverage. The validation we needed for training is secured within the model tests where we check that the shape of the tensor outputted by the model is in balance with the input shape. Everything else should be covered by the Pytorch Lighting Trainer. Testing the input to output shapes within the model tests saves the resources required to load a training run and manages to test the shape mapping prerequisite for the training to be possible. It might have been nice to run a test that validates that the training loss decreases and accuracy increase over the training period but this is better managed using WandB. Even though we would have managed 100% coverage the training process would have to be closely monitored using WandB or other loggers.
 
 ### Question 9
 
@@ -216,7 +210,9 @@ end of the project.
 >
 > Answer:
 
---- question 9 fill here ---
+We did not make use of branches and pull requests in the workflow, as we weren't able to figure out and organise the branches from the beginning. On one instance, we branched out and merged using a pull request, but it was kind of confusing. Instead, we agreed on not working on the same files simultaneously and were cautious about pushing and pulling to avoid conflicts.
+
+Using branches would have been helpful as each group member would have had their own branch and do their coding there, independent of the main branch. That way, each one could have pushed their changes to their own branch without having to worry about conflicts. To merge with the main branch, they would then have simply made a pull request that the other members would have to approve and that would have made it easier to resolve any conflicts on the main branch. If we were to do it again, we would make sure to have a clear workflow from the beginning where everyone would be working on their own branch, and using pull requests before merging to main.
 
 ### Question 10
 
@@ -229,9 +225,7 @@ end of the project.
 > *We did make use of DVC in the following way: ... . In the end it helped us in ... for controlling ... part of our*
 > *pipeline*
 >
-> Answer:
-
---- question 10 fill here ---
+> Answer: We used DVC for version control of our training and validation data. We used Google Cloud Buckets to store our data remotely and in the real-time runtime(when building our docker files) we called DVC to pull the data before performing training or using other aspects of the pipeline. Doing it like this we get version control on the data and minimize the image size generated when the docker file is run. This helped us minimize issues that had to do with the data accessing part of our pipeline when running in the cloud. Even though using version control for the data in a project implemented over a short period of time we were already considering altering the data a bit so when we reduced the data it came in handy to be using DVC.
 
 ### Question 11
 
@@ -247,7 +241,17 @@ end of the project.
 >
 > Answer:
 
---- question 11 fill here ---
+We are using three kinds of unit testing: We run functional tests on the code, formatting tests and import tests. 
+
+For the functional tests, we use the ``pytest`` package and run tests on the model, the data and the API. The model tests assert that the model uses the correct architecture and that it returns logits of the correct shape. The data tests make sure that the data loader returns the correct batch sizes, both for the train and test sets. The API tests make sure that the endpoints work as intended and return the correct status codes, 200 for OK and 404 for not found. In addition, it asserts that the query is saved to a file. The tests are marked with ``skipif`` if the path to the data or the checkpoint do not exist.
+
+For the formatting tests, we use the library ``flake8``, that checks if the code is formatted according to the PEP8 style guide. It checks line length, whitespaces around operators and number of line breaks after classes and methods, among other checks.
+
+We use the package ``isort`` to test the imports. That checks if the imports are correctly set up in terms of multiple imports, types and sections.
+
+The functional tests are run on ubuntu-latest, macos-latest and windows-latest, and the formatting and import tests are run on ubuntu-latest. We do not utilise pre-commits, so the code can be committed and pushed without passing the tests. 
+
+[Here](https://github.com/hallamaria1997/02476_mlops/actions/runs/3940581840) you can see one workflow action on our git repository including the three kinds of tests.
 
 ## Running code and tracking experiments
 
