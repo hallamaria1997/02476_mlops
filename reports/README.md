@@ -134,9 +134,9 @@ end of the project.
 > *complete copy of our development enviroment, one would have to run the following commands*
 >
 > Answer: We used a Conda environment for managing our dependencies. A clean Conda environment was created in the beginning to keep track of all packages installed over the course of the project. To extract a list of dependencies, a requirements.txt file was generated using pipreqs. However, some package versions later needed to be manually changed to make sure they worked with Docker. A new member joining the project would simply have to execute the following commands to get a copy of the environment:
-$ git clone [https://github.com/hallamaria1997/02476_mlops.git]
-$ dvc pull
-$ pip install -e .
+> $ git clone [https://github.com/hallamaria1997/02476_mlops.git]
+> $ dvc pull
+> $ pip install -e .
 
 This would provide the new member with the current versions of code files, data as well as all the packages needed to be able to run the code.
 
@@ -304,8 +304,8 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 > *training docker image: `docker run trainer:latest lr=1e-3 batch_size=64`. Link to docker file: <weblink>*
 >
 > Answer: We used Docker for a few different tasks in this project. We created a training image that is used to run a container that we can then use to train the model. We also created a deployment image that was used to as a part of the FastAPI used in the Cloud Run setup. Additionally, we created a prediction image that could be used to make a prediction container for the model but decided to only include the deployment image since both images were being used to make the same predictions. Running our docker images is very straight forward as they take in very few additional arguments. To run the training image with the default hydra config file you would only need to run the following commands:
-$ docker pull gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer:latest
-$ docker run --name <container_name> gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer:latest
+> $ docker pull gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer:latest
+> $ docker run --name <container_name> gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer:latest
 
 --- question 15 fill here ---
 
