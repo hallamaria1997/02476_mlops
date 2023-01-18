@@ -25,7 +25,7 @@ def train(config: DictConfig) -> None:
     
     model=SentimentModel()
 
-    wandb.init(mode=config.experiment.wandb.mode)
+    wandb.init(mode=config.experiment.wandb.mode, config = config.experiment.hyper_parameters)
 
     train_data = make_dataloader(filepath="/data/raw/train.csv",
                                         batch_size=batch_size,
@@ -65,7 +65,7 @@ def train(config: DictConfig) -> None:
     
     trainer.fit(model, train_dataloaders=train_data, val_dataloaders=val_data)
     
-    torch.save(model.state_dict(), "models/checkpoint.pth")
+    torch.save(model.state_dict(), "/models/checkpoint.pth")
     print("saved to model/checkpoint.pth")
 
 if __name__ == "__main__":

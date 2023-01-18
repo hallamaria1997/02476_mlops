@@ -1,8 +1,8 @@
 hyper_parameters:
-  n_epochs: 10
+  n_epochs: 4
   lr: 1e-5
   batch_size: 32
-  n_rows: 640
+  n_rows: 64
 
 wandb:
   mode: "online" # "online", "offline" or "disabled". Disabled when gCloud
