@@ -140,8 +140,8 @@ end of the project.
 > `$ dvc pull`
 > 
 > `$ pip install -e .`
-
-This would provide the new member with the current versions of code files, data as well as all the packages needed to be able to run the code.
+>
+> This would provide the new member with the current versions of code files, data as well as all the packages needed to be able to run the code.
 
 
 --- question 4 fill here ---
