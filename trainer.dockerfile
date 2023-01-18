@@ -14,9 +14,11 @@ COPY requirements.txt requirements.txt
 
 COPY setup.py setup.py
 
-COPY src/ src/
+COPY .dvc/ .dvc/
 
-COPY data/ data/
+COPY data.dvc data.dvc
+
+COPY src/ src/
 
 COPY reports/ reports/
 
@@ -28,6 +30,11 @@ WORKDIR /
 
 RUN pip install -r requirements.txt --no-cache-dir
 
+#RUN dvc pull
+#COPY data/ data/
+
 # naming as entrypoint
 
-ENTRYPOINT ["python", "-u", "src/models/train_model.py", "experiment=exp3"]
+#ENTRYPOINT ["python", "-u", "src/models/train_model.py", "experiment=exp3"]
+
+ENTRYPOINT ["ls"]
