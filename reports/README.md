@@ -182,9 +182,7 @@ end of the project.
 > *In total we have implemented X tests. Primarily we are testing ... and ... as these the most critical parts of our*
 > *application but also ... .*
 >
-> Answer:
-
-In total, we have implemented 6 tests. Primarily we were testing the data preprocessing and loading along with the model as it is crucial that our model is created correctly and fed data in the correct format. We tested the shape of the data given the batch size for both the training and validation. We also tested that a batch contains all labels. For the model, we tested that the model was created correctly by checking the type and that the output shape was correct given certain input shapes.
+> Answer: In total, we have implemented 6 tests. Primarily we were testing the data preprocessing and loading along with the model as it is crucial that our model is created correctly and fed data in the correct format. We tested the shape of the data given the batch size for both the training and validation. We also tested that a batch contains all labels. For the model, we tested that the model was created correctly by checking the type and that the output shape was correct given certain input shapes.
 
 ### Question 8
 
