@@ -195,9 +195,7 @@ end of the project.
 > *The total code coverage of code is X%, which includes all our source code. We are far from 100% coverage of our **
 > *code and even if we were then...*
 >
-> Answer:
-
---- question 8 fill here ---
+> Answer: The total code coverage is 69% of our src code, the part that drags the percentage down is the training part. The data, model, and tests are covered 100% but the Pytorch Lighting Trainer module and therefore training process is not included in the coverage. The validation we needed for training is secured within the model tests where we check that the shape of the tensor outputted by the model is in balance with the input shape. Everything else should be covered by the Pytorch Lighting Trainer. Testing the input to output shapes within the model tests saves the resources required to load a training run and manages to test the shape mapping prerequisite for the training to be possible. It might have been nice to run a test that validates that the training loss decreases and accuracy increase over the training period but this is better managed using WandB. Even though we would have managed 100% coverage the training process would have to be closely monitored using WandB or other loggers.
 
 ### Question 9
 
