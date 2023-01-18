@@ -134,9 +134,12 @@ end of the project.
 > *complete copy of our development enviroment, one would have to run the following commands*
 >
 > Answer: We used a Conda environment for managing our dependencies. A clean Conda environment was created in the beginning to keep track of all packages installed over the course of the project. To extract a list of dependencies, a requirements.txt file was generated using pipreqs. However, some package versions later needed to be manually changed to make sure they worked with Docker. A new member joining the project would simply have to execute the following commands to get a copy of the environment:
-> $ git clone [https://github.com/hallamaria1997/02476_mlops.git]
-> $ dvc pull
-> $ pip install -e .
+> 
+> `$ git clone [https://github.com/hallamaria1997/02476_mlops.git]`
+> 
+> `$ dvc pull`
+> 
+> `$ pip install -e .`
 
 This would provide the new member with the current versions of code files, data as well as all the packages needed to be able to run the code.
 
