@@ -34,7 +34,7 @@ RUN pip install 'dvc[gs]'
 RUN dvc init --no-scm
 RUN dvc remote add -d myremote gs://dtumlops-twitter-sentiment-data/
 
-RUN dvc pull
+RUN dvc pull -v
 COPY data/ data/
 
 # naming as entrypoint
