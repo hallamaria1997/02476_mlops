@@ -205,9 +205,7 @@ end of the project.
 > *We made use of both branches and PRs in our project. In our group, each member had an branch that they worked on in*
 > *addition to the main branch. To merge code we ...*
 >
-> Answer:
-
-We did not make use of branches and pull requests in the workflow, as we weren't able to figure out and organise the branches from the beginning. On one instance, we branched out and merged using a pull request, but it was kind of confusing. Instead, we agreed on not working on the same files simultaneously and were cautious about pushing and pulling to avoid conflicts.
+> Answer: We did not make use of branches and pull requests in the workflow, as we weren't able to figure out and organise the branches from the beginning. On one instance, we branched out and merged using a pull request, but it was kind of confusing. Instead, we agreed on not working on the same files simultaneously and were cautious about pushing and pulling to avoid conflicts.
 
 Using branches would have been helpful as each group member would have had their own branch and do their coding there, independent of the main branch. That way, each one could have pushed their changes to their own branch without having to worry about conflicts. To merge with the main branch, they would then have simply made a pull request that the other members would have to approve and that would have made it easier to resolve any conflicts on the main branch. If we were to do it again, we would make sure to have a clear workflow from the beginning where everyone would be working on their own branch, and using pull requests before merging to main.
 
@@ -236,11 +234,8 @@ Using branches would have been helpful as each group member would have had their
 > *We have organized our CI into 3 separate files: one for doing ..., one for running ... testing and one for running*
 > *... . In particular for our ..., we used ... .An example of a triggered workflow can be seen here: <weblink>*
 >
-> Answer:
-
-We are using three kinds of unit testing: We run functional tests on the code, formatting tests and import tests. 
-
-For the functional tests, we use the ``pytest`` package and run tests on the model, the data and the API. The model tests assert that the model uses the correct architecture and that it returns logits of the correct shape. The data tests make sure that the data loader returns the correct batch sizes, both for the train and test sets. The API tests make sure that the endpoints work as intended and return the correct status codes, 200 for OK and 404 for not found. In addition, it asserts that the query is saved to a file. The tests are marked with ``skipif`` if the path to the data or the checkpoint do not exist.
+> Answer: We are using three kinds of unit testing: We run functional tests on the code, formatting tests and import tests. 
+      For the functional tests, we use the ``pytest`` package and run tests on the model, the data and the API. The model tests assert that the model uses the correct architecture and that it returns logits of the correct shape. The data tests make sure that the data loader returns the correct batch sizes, both for the train and test sets. The API tests make sure that the endpoints work as intended and return the correct status codes, 200 for OK and 404 for not found. In addition, it asserts that the query is saved to a file. The tests are marked with ``skipif`` if the path to the data or the checkpoint do not exist.
 
 For the formatting tests, we use the library ``flake8``, that checks if the code is formatted according to the PEP8 style guide. It checks line length, whitespaces around operators and number of line breaks after classes and methods, among other checks.
 
