@@ -162,9 +162,7 @@ end of the project.
 >
 > Answer length: 50-100 words.
 >
-> Answer:
-
---- question 6 fill here ---
+> Answer: We followed the implementation of isort and flake8 quality/format. Following coding standards in larger projects is important to make sure that all coders are following the same guideline, this ensures the maintenance of readability and consistency in the project. This is also important for the reproducibility of the code and can make it easier to debug and detect errors for someone that didn't write the code.
 
 ## Version control
 
