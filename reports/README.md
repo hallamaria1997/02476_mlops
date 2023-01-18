@@ -223,9 +223,7 @@ end of the project.
 > *We did make use of DVC in the following way: ... . In the end it helped us in ... for controlling ... part of our*
 > *pipeline*
 >
-> Answer:
-
---- question 10 fill here ---
+> Answer: We used DVC for version control of our training and validation data. We used Google Cloud Buckets to store our data remotely and in the real-time runtime(when building our docker files) we called DVC to pull the data before performing training or using other aspects of the pipeline. Doing it like this we get version control on the data and minimize the image size generated when the docker file is run. This helped us minimize issues that had to do with the data accessing part of our pipeline when running in the cloud. Even though using version control for the data in a project implemented over a short period of time we were already considering altering the data a bit so when we reduced the data it came in handy to be using DVC.
 
 ### Question 11
 
