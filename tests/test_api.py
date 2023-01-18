@@ -3,23 +3,22 @@ from src.API.main import app, save_tweet
 import pytest
 import os
 
-if os.path.exists('models/checkpoint.pth'):
-	client = TestClient(app)
-
 @pytest.mark.skipif(not os.path.exists('models/checkpoint.pth'), reason="Checkpoint not found")
 def test_root():
+    client = TestClient(app)
     response = client.get('/')
     assert response.status_code == 200
     assert response.json() == {'message': 'Call /predict/<tweet> to get a prediction.'}
 
 @pytest.mark.skipif(not os.path.exists('models/checkpoint.pth'), reason="Checkpoint not found")
 def test_save_tweet():
+	client = TestClient(app)
 	predictions_path = 'src\\api\\'
 	with open(predictions_path + 'predictions.csv', 'r') as file:
 		lines = file.readlines()
 		n_lines_before = len(lines)
 
-	response = client.get('/predict/testing that this tweet will be saved')
+	response = client.get('/predict/?tweet=testing that this tweet will be saved')
 
 	save_tweet('testing that this tweet will be saved', 1, 'neutral', predictions_path)
 
@@ -38,5 +37,6 @@ def test_save_tweet():
 
 @pytest.mark.skipif(not os.path.exists('models/checkpoint.pth'), reason="Checkpoint not found")
 def test_empty_tweet():
-	response = client.get('/predict/')
-	assert response.status_code == 404
+    client = TestClient(app)
+    response = client.get('/predict/')
+    assert response.status_code == 422

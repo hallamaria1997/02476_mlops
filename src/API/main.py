@@ -7,11 +7,15 @@ import os
 
 app = FastAPI()
 
-if os.path.exists('../../models/checkpoint.pth'):
-    if sys.argv[1] == 'False':
-        p = Predict(model_path='../../models/checkpoint.pth')
-    else:
-        p = Predict()
+# have to do this to make it testable
+if len(sys.argv) > 1 and sys.argv[1] == 'False':
+    # if we are not testing
+    # (because then we run through cli and can add arguments)
+    p = Predict(model_path='../../models/checkpoint.pth')
+else:
+    # if we are testing (can't add arguments because we call
+    #                    testclient)
+    p = Predict()
 
 
 def save_tweet(tweet: str, pred_id: int, pred_label: str,
@@ -28,12 +32,12 @@ def root() -> dict:
     return {"message": "Call /predict/<tweet> to get a prediction."}
 
 
-@app.get("/predict/{tweet}")
+@app.get("/predict/")
 def predict(tweet: str, background_tasks: BackgroundTasks) -> dict:
     """Returns a classification of an input sentence.
 
     Parameters:
-        tweet (string). Inserted as a parameter in the URL.
+        tweet (string). Inserted as a parameter in the URL query.
     Returns:
         pred_id (int): A numeral representation of the class (0, 1 or 2).
         pred_label (string): A text representation of the class
