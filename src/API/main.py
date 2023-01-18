@@ -1,18 +1,9 @@
 from fastapi import FastAPI, BackgroundTasks
-import uvicorn
-import sys
 from src.models.predict_model import Predict
-import os
 
 
 app = FastAPI()
-
-if os.path.exists('../../models/checkpoint.pth'):
-    if sys.argv[1] == 'False':
-        p = Predict(model_path='../../models/checkpoint.pth')
-    else:
-        p = Predict()
-
+p = Predict(model_path='../../models/checkpoint.pth')
 
 def save_tweet(tweet: str, pred_id: int, pred_label: str,
                file_path: str = '') -> None:
@@ -28,12 +19,12 @@ def root() -> dict:
     return {"message": "Call /predict/<tweet> to get a prediction."}
 
 
-@app.get("/predict/{tweet}")
+@app.get("/predict/")
 def predict(tweet: str, background_tasks: BackgroundTasks) -> dict:
     """Returns a classification of an input sentence.
 
     Parameters:
-        tweet (string). Inserted as a parameter in the URL.
+        tweet (string). Inserted as a parameter in the URL query.
     Returns:
         pred_id (int): A numeral representation of the class (0, 1 or 2).
         pred_label (string): A text representation of the class
@@ -43,7 +34,3 @@ def predict(tweet: str, background_tasks: BackgroundTasks) -> dict:
     background_tasks.add_task(save_tweet, tweet, pred_id, pred_label)
     return {"pred_id": str(pred_id),
             "pred_label": pred_label}
-
-
-if __name__ == '__main__':
-    uvicorn.run("main:app", port=8000, reload=True)
