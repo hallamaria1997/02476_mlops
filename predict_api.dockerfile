@@ -14,15 +14,13 @@ COPY requirements.txt requirements.txt
 
 COPY setup.py setup.py
 
-COPY data.dvc data.dvc
+COPY models.dvc models.dvc
 
 COPY .dvcignore .dvcignore
 
 COPY src/ src/
 
 COPY reports/ reports/
-
-COPY models/ models/
 
 # setting working directory
 
@@ -31,10 +29,10 @@ WORKDIR /
 RUN pip install -r requirements.txt --no-cache-dir
 RUN pip install 'dvc[gs]'
 RUN dvc init --no-scm
-RUN dvc remote add -d myremote gs://dtumlops-twitter-sentiment-data/
+RUN dvc remote add -d myremote gs://trained-twitter-model/
 
-RUN dvc pull -v
-COPY data/ data/
+RUN dvc pull --remote remote_model -v
+COPY models/ models/
 
 COPY src/API/main.py src/API/main.py
 

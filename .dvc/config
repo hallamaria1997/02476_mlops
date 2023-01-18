@@ -1,4 +1,7 @@
 [core]
-    remote = remote_storage
+    remote = remote_model
+    autostage = true
 ['remote "remote_storage"']
     url = gs://dtumlops-twitter-sentiment-data/
+['remote "remote_model"']
+    url = gs://trained-twitter-model
