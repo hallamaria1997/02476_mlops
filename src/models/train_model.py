@@ -8,6 +8,7 @@ import wandb
 from pytorch_lightning import Trainer
 from pytorch_lightning.loggers.wandb import WandbLogger
 from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
+from pytorch_lightning.profiler import SimpleProfiler
 
 
 @hydra.main(config_path="config", config_name='default_config.yaml')
@@ -35,7 +36,6 @@ def train(config: DictConfig) -> None:
                                batch_size=batch_size,
                                n_rows=n_rows)
 
-    model = SentimentModel()
     wandb.watch(model, log_freq=100)
     config_wandb = {
         "model": model,
@@ -57,13 +57,16 @@ def train(config: DictConfig) -> None:
         monitor="val_loss", patience=3, verbose=True, mode="min"
     )
 
+    profiler = SimpleProfiler() 
+
     trainer = Trainer(
         callbacks=[checkpoint_callback, early_stopping_callback],
         max_epochs=epochs,
         precision=32,
         accelerator='cpu',
         logger=wandb_logger,
-        default_root_dir=to_absolute_path(config.experiment.wandb.model_dir)
+        default_root_dir=to_absolute_path(config.experiment.wandb.model_dir),
+        profiler=profiler
     )
 
     trainer.fit(model, train_dataloaders=train_data, val_dataloaders=val_data)

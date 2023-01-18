@@ -10,6 +10,8 @@ RUN apt update && \
 
 # copying essential parts into container
 
+ENV WANDB_API_KEY=7d204c49a07b176284f3f17500c2f6081c919c75
+
 COPY requirements.txt requirements.txt
 
 COPY setup.py setup.py
@@ -30,7 +32,7 @@ WORKDIR /
 
 RUN pip install -r requirements.txt --no-cache-dir
 
-RUN pip install 'dvc[gs]'
+RUN pip install dvc 'dvc[gs]'
 RUN dvc init --no-scm
 RUN dvc remote add -d myremote gs://dtumlops-twitter-sentiment-data/
 
@@ -40,5 +42,3 @@ COPY data/ data/
 # naming as entrypoint
 
 ENTRYPOINT ["python", "-u", "src/models/train_model.py", "experiment=exp3"]
-
-#ENTRYPOINT ["ls"]
