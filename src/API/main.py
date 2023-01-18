@@ -10,12 +10,14 @@ app = FastAPI()
 # have to do this to make it testable
 if len(sys.argv) > 1 and sys.argv[1] == 'False':
     # if we are not testing
-    # (because then we run through cli and can add arguments)
-    p = Predict(model_path='../../models/checkpoint.pth')
+    # (because then we run through cli and can add arguments
+    if os.path.exists('../../models/checkpoint.pth'):
+        p = Predict(model_path='../../models/checkpoint.pth')
 else:
     # if we are testing (can't add arguments because we call
     #                    testclient)
-    p = Predict()
+    if os.path.exists('models/checkpoint.pth'):
+        p = Predict()
 
 
 def save_tweet(tweet: str, pred_id: int, pred_label: str,
