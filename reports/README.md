@@ -76,9 +76,9 @@ end of the project.
 * [x] Write unit tests related to model construction and or model training
 * [x] Calculate the coverage.
 * [x] Get some continuous integration running on the github repository
-* [HMG] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
-* [HMG] Create a trigger workflow for automatically building your docker images
-* [HMG] Get your model training in GCP using either the Engine or Vertex AI
+* [x] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
+* [x] Create a trigger workflow for automatically building your docker images
+* [x] Get your model training in GCP using either the Engine or Vertex AI
 * [x] Create a FastAPI application that can do inference using your model
 * [ ] If applicable, consider deploying the model locally using torchserve
 * [ ] Deploy your model in GCP using either Functions or Run as the backend
@@ -133,7 +133,16 @@ end of the project.
 > *We used ... for managing our dependencies. The list of dependencies was auto-generated using ... . To get a*
 > *complete copy of our development enviroment, one would have to run the following commands*
 >
-> Answer:
+> Answer: We used a Conda environment for managing our dependencies. A clean Conda environment was created in the beginning to keep track of all packages installed over the course of the project. To extract a list of dependencies, a requirements.txt file was generated using pipreqs. However, some package versions later needed to be manually changed to make sure they worked with Docker. A new member joining the project would simply have to execute the following commands to get a copy of the environment:
+> 
+> `$ git clone [https://github.com/hallamaria1997/02476_mlops.git]`
+> 
+> `$ dvc pull`
+> 
+> `$ pip install -e .`
+
+This would provide the new member with the current versions of code files, data as well as all the packages needed to be able to run the code.
+
 
 --- question 4 fill here ---
 
@@ -297,7 +306,11 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 > *For our project we developed several images: one for training, inference and deployment. For example to run the*
 > *training docker image: `docker run trainer:latest lr=1e-3 batch_size=64`. Link to docker file: <weblink>*
 >
-> Answer:
+> Answer: We used Docker for a few different tasks in this project. We created a training image that is used to run a container that we can then use to train the model. We also created a deployment image that was used to as a part of the FastAPI used in the Cloud Run setup. Additionally, we created a prediction image that could be used to make a prediction container for the model but decided to only include the deployment image since both images were being used to make the same predictions. Running our docker images is very straight forward as they take in very few additional arguments. To run the training image with the default hydra config file you would only need to run the following commands:
+>
+> `$ docker pull gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer:latest`
+>    
+> `$ docker run --name <container_name> gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer:latest`
 
 --- question 15 fill here ---
 
@@ -451,7 +464,11 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 > Example:
 > *The biggest challenges in the project was using ... tool to do ... . The reason for this was ...*
 >
-> Answer:
+> Answer: The struggles were varied and touched on nearly all aspects of the project. The initial struggle was loading and formatting the data in the correct tensor format to fit the criteria of the model and make the batches append to the input tensors, the standard arrangement was that it created a list of tensors. This took some time, but once the correct format was in place, the training went well. Creating the source code took longer than expected but with the help of profilers and Pytorch Lightning, we managed to increase the transparency of the src code. Incorporating Pytorch Lightning also took some time due to the model predicting in lists but not tensors during the validation step of the Trainer. This could be fixed by using argmax and softmax functions from torch but not NumPy and sklearn as used in some tutorials of the course. Other than that implementation of the source code went well. 
+
+We had some issues with docker, to start off accessing data using DVC in docker files was causing major issues. Building both the docker image for the training and API required many tries also due to DVC issues. We had to work with multiple buckets to store data(one for training and another that stored the trained model for testing) this required some customization of the setup in the docker file. 
+
+In the cloud we had back down from letting the trigger be active since for some unknown reasons would get stuck at DVC pull, we debugged and tried a lot of fixes(also consulting Nicki and TAs) out for an entire day but nothing seemed to work unless we would give up DVC which we did not want to do. Getting VertexAI to run in the cloud did not go smoothly due to conflicts between the Pytorch Lightning logger and Vertex AI logs, this was fixed by removing the progress bars of Lightning loggers.
 
 --- question 26 fill here ---
 
