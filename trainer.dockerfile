@@ -14,9 +14,9 @@ COPY requirements.txt requirements.txt
 
 COPY setup.py setup.py
 
-COPY .dvc/ .dvc/
-
 COPY data.dvc data.dvc
+
+COPY .dvcignore .dvcignore
 
 COPY src/ src/
 
@@ -30,11 +30,15 @@ WORKDIR /
 
 RUN pip install -r requirements.txt --no-cache-dir
 
-#RUN dvc pull
-#COPY data/ data/
+RUN pip install 'dvc[gs]'
+RUN dvc init --no-scm
+RUN dvc remote add -d myremote gs://dtumlops-twitter-sentiment-data/
+
+RUN dvc pull
+COPY data/ data/
 
 # naming as entrypoint
 
-#ENTRYPOINT ["python", "-u", "src/models/train_model.py", "experiment=exp3"]
+ENTRYPOINT ["python", "-u", "src/models/train_model.py", "experiment=exp3"]
 
-ENTRYPOINT ["ls"]
+#ENTRYPOINT ["ls"]
