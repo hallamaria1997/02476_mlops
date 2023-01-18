@@ -264,10 +264,7 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 >
 > Answer length: 50-100 words.
 >
-> Example:
-> *We used a simple argparser, that worked in the following way: python my_script.py --lr 1e-3 --batch_size 25*
->
-> Answer:
+> Answer: To make it easier to configure our experiments, we used config files. Hydra is the configuration tool that we used; it keeps track of hyperparameters as well as wandb parameters. Each experiment file is located in the following folder: src/models/config/experiment and, in order to try out different experiments, the following must be typed into the terminal: python model train.py experiment=exp3
 
 --- question 12 fill here ---
 
