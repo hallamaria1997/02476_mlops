@@ -144,13 +144,15 @@ Transformers helped us a great deal with the documentation and tutorials for the
 > Answer: 
 
 
-We used a Conda environment for managing our dependencies. A clean Conda environment was created in the beginning to keep track of all packages installed over the course of the project. To extract a list of dependencies, a `requirements.txt` file was generated using pipreqs. However, some package versions later needed to be manually changed to make sure they worked with Docker. A new member joining the project would simply have to execute the following commands to get a copy of the environment:
- 
-`$ git clone [https://github.com/hallamaria1997/02476_mlops.git]`
+We used a Conda environment for managing our dependencies. A clean Conda environment was created in the beginning to keep track of all packages installed over the course of the project. To extract a list of dependencies, a `requirements.txt` file was generated using `pipreqs`. However, some package versions later needed to be manually changed to make sure they worked with Docker. A new member joining the project would simply have to execute the following commands to get a copy of the environment:
 
-`$ dvc pull`
+```bash
+$ git clone [https://github.com/hallamaria1997/02476_mlops.git]
 
-`$ pip install -e .`
+$ dvc pull
+
+$ pip install -e .
+```
 
 This would provide the new member with the current versions of code files, data as well as all the packages needed to be able to run the code.
 
@@ -182,7 +184,7 @@ We initialized the git repo using cookiecutter template at the beginning of the 
 > Answer: 
 
 
-We followed the isort and flake8 quality/format styling. We also improved our code by typing it to make it easier to read.  Following coding standards in larger projects is important to make sure that all coders are following the same guideline, this ensures the maintenance of readability and consistency in the project. This is also important for the reproducibility of the code and can make it easier to debug and detect errors for someone that didn't write the code.
+We followed the `isort` and `flake8` quality/format styling. We also improved our code by typing it to make it easier to read.  Following coding standards in larger projects is important to make sure that all coders are following the same guideline, this ensures the maintenance of readability and consistency in the project. This is also important for the reproducibility of the code and can make it easier to debug and detect errors for someone that didn't write the code.
 
 ## Version control
 
@@ -252,7 +254,7 @@ Using branches would have been helpful as each group member would have had their
 > Answer: 
 
 
-We used DVC for version control of our training and validation data. We used Google Cloud Buckets to store our data remotely and in the real-time runtime (when building our Docker files) we called DVC to pull the data before performing training or using other aspects of the pipeline. Doing it like this we get version control on the data and minimize the image size generated when the docker file is run. This helped us minimize issues that had to do with the data accessing part of our pipeline when running in the cloud. Even though using version control for the data in a project implemented over a short period of time we were already considering altering the data a bit so when we reduced the data it came in handy to be using DVC.
+We used DVC for version control of our training and validation data as well as our models after training. We used Google Cloud Buckets to store our data remotely and in the real-time runtime (when building our Docker files) we called DVC to pull the data before performing training or using other aspects of the pipeline. Doing it like this we get version control on the data and minimize the image size generated when the Docker file is run. This helped us minimize issues that had to do with the data accessing part of our pipeline when running in the cloud. Even though using version control for the data in a project implemented over a short period of time we were already considering altering the data a bit so when we reduced the data it came in handy to be using DVC.
 
 ### Question 11
 
@@ -491,7 +493,7 @@ It returns a JSON object containing the numeric id of the prediction and the str
 >
 > Answer:
 
---- question 24 fill here ---
+Group member s212963 used 17,51 credits, group member s212958 used 30,78 credits, group member s212951 used 15,2 credits and group member s212957  used 50 credits, in total  credits was spend during development. The service deployment is free for the first 50 hours so that didn‘t start to take down our credits. The service costing them most having Virtual Machine Instances running.
 
 ## Overall discussion of project
 
