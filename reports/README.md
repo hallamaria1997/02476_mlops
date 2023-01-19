@@ -367,7 +367,8 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 > **You can take inspiration from [this figure](figures/bucket.png).**
 >
 > Answer:
-![my_image](figures/<image>.<extension>)
+![buckets](figures/buckets.png)
+![bucket_content](figures/bucket_content.png)
 
 --- question 19 fill here ---
 
@@ -378,7 +379,7 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 >
 > Answer:
 ![container_registry1](figures/container_registry1.png)
---- question 20 fill here ---
+
 
 ### Question 21
 
@@ -386,8 +387,8 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 > **your project. You can take inspiration from [this figure](figures/build.png).**
 >
 > Answer:
+![build_history](figures/build_history.png)
 
---- question 21 fill here ---
 
 ### Question 22
 
