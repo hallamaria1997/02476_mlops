@@ -27,12 +27,12 @@ def train(config: DictConfig) -> None:
 
     model = SentimentModel()
 
-    wandb.init(mode=config.experiment.wandb.mode,
+    wandb.init(mode=config.experiment.wandb.mode, 
                config = config.experiment.hyper_parameters)
 
     train_data = make_dataloader(filepath="/data/raw/train.csv",
-                                batch_size=batch_size,
-                                n_rows=n_rows)
+                               batch_size=batch_size,
+                               n_rows=n_rows)
     val_data = make_dataloader(filepath="/data/raw/test.csv",
                                batch_size=batch_size,
                                n_rows=n_rows)
@@ -53,12 +53,12 @@ def train(config: DictConfig) -> None:
     checkpoint_callback = ModelCheckpoint(
         dirpath="./models", monitor="val_loss", mode="min"
     )
- 
+
     early_stopping_callback = EarlyStopping(
         monitor="val_loss", patience=3, verbose=True, mode="min"
     )
 
-    profiler = SimpleProfiler() 
+    profiler = SimpleProfiler()
 
     trainer = Trainer(
         callbacks=[checkpoint_callback, early_stopping_callback],
@@ -71,17 +71,17 @@ def train(config: DictConfig) -> None:
     )
 
     trainer.fit(model, train_dataloaders=train_data, val_dataloaders=val_data)
-    
+
     torch.save(model.state_dict(), "/models/checkpoint.pth")
     print("Model saved to models/checkpoint.pth")
-    
+   
     storage_client = storage.Client(project='dtumlops-tweet-sentiment')
     bucket = storage_client.bucket("trained-twitter-model")
     blob = bucket.blob("/models/checkpoint.pth")
 
     print("Uploading to cloud")
     blob.upload_from_filename("/models/checkpoint.pth", timeout=14400)
-    
+
     print("Model saved to GCP bucket!")
 
 
