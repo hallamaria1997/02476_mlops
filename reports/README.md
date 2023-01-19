@@ -342,7 +342,7 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 > Example:
 > *We used the following two services: Engine and Bucket. Engine is used for... and Bucket is used for...*
 >
-> Answer: The GCP services we used for our project were Bucket, Vertex AI, Cloud Build, Container Registry and Cloud Run. We used Buckets to store our data and linked the Buckets to our GitHub repository for data version control. The Vertex AI was used to perform training runs to train the model, the Cloud Build was linked to the Github repository to automatically build docker images and the Container Registry was used to store these images. Finally, the Cloud Run was used to deploy our **model application??**.
+> Answer: The GCP services we used for our project were Bucket, Vertex AI, Cloud Build, Container Registry and Cloud Run. We used Buckets to store our data and linked the Buckets to our GitHub repository for data version control. The Vertex AI was used to perform training runs to train the model, the Cloud Build was linked to the Github repository to automatically build docker images and the Container Registry was used to store these images. Finally, the Cloud Run was used to deploy our FastAPI application.
 
 --- question 17 fill here ---
 
