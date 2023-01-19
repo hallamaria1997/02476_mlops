@@ -1,0 +1,11 @@
+hyper_parameters:
+  n_epochs: 20
+  lr: 1e-4
+  batch_size: 32
+  n_rows: 6400
+
+wandb:
+  mode: "online" # "online", "offline" or "disabled". Disabled when gCloud
+  project: "dtu_mlops_group10"
+  entity: "dtu_mlops_group10"
+  model_dir: '/src/models'
