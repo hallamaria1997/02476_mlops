@@ -1,5 +1,10 @@
 02476 ML Ops -- Final Project
+*Sentiment Classification of Tweets*
 ==============================
+[![Code Tests](https://github.com/hallamaria1997/02476_mlops/blob/main/.github/workflows/tests.yml/badge.svg)](https://github.com/hallamaria1997/02476_mlops/blob/main/.github/workflows/tests.yml)
+[![isort](https://github.com/hallamaria1997/02476_mlops/blob/main/.github/workflows/isort.yml/badge.svg)](https://github.com/hallamaria1997/02476_mlops/blob/main/.github/workflows/isort.yml)
+[![flake8](https://github.com/hallamaria1997/02476_mlops/blob/main/.github/workflows/flake8.yml/badge.svg)](https://github.com/hallamaria1997/02476_mlops/blob/main/.github/workflows/flake8.yml)
+
 
 # Sentiment Classification of Tweets -- Project Description
 - Halla María Hjartardóttir: s212958
@@ -96,7 +101,7 @@ Project Organization
     │   └── API            <- Scripts to create FastAPI
     │       └── main.py
     │       └── predictions.csv
-    ├── tests                <- 
+    ├── tests                <- Scripts for testing using pytest (pytest tests/)
     │   ├── __init__.py
     │   ├── _test_api.py
     │   ├── test_data.py
