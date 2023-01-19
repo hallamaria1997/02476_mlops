@@ -80,8 +80,8 @@ end of the project.
 * [x] Create a trigger workflow for automatically building your docker images
 * [x] Get your model training in GCP using either the Engine or Vertex AI
 * [x] Create a FastAPI application that can do inference using your model
-* [ ] If applicable, consider deploying the model locally using torchserve
-* [ ] Deploy your model in GCP using either Functions or Run as the backend
+* [x] If applicable, consider deploying the model locally using torchserve
+* [x] Deploy your model in GCP using either Functions or Run as the backend
 
 ### Week 3
 
