@@ -570,12 +570,13 @@ In the cloud we had back down from letting the trigger be active since for some 
 >
 > Answer:
 
-Student s212963 worked on configuring hydra config files for experiments and logging them with W&B, was involved in setting up the model and improving the code by adding typing, and profiled the training. config
+Student s212963 worked on configuring hydra config files for experiments and logging them with W&B, was involved in coding the transformers model structure, training process and integration to Pytorch Lightning Trainer and improving the code by adding typing, and profiled the training. 
 
-Student s212951 was most involved in setting up the data version control with DVC, worked on creating the dockerfile used for the training runs, setting up the Cloud Build triggers and GCP data storage bucket as well as the Vertex AI training runs. Was also involved in the initial setup of the repository such as creating the data preprocessing script, dataloaders and the model training script.
-	
-Student s212958 set up the folowing in the source code: transformers model structure(model.py), training process and integrated it to Pytorch Lightning Trainer(train_model.py), fetched and formatted the data(load_dataset.py). Implemented the tests along with setting up configuration of flake8, coverage and isort for continuous integration of the project. Was also involved in the initial setup of the repository(cookie cutter and basic setup) along with creating the docker image for FastAPI and deploying it using Cloud Run in GCP.
-	
-Student s212957 set up the predict_model.py in the soruce code and implemented a FastAPI service to run it on the latest trained model. Worked with s212958 on creating and building the dockerfile for the FastAPI. Was in charge of deploying the FastAPI service using Cloud Run in GCP, users can use the service by inserting a new tweet and getting a prediction of if it is neutral, negative or positive.  ....
-	
-Although the answer above lists each student's main contributions it is worth noting that all students contributed equally to the project and were involved in most, or all, aspects of the project. 
+Student s212951 set up DVC, the dockerfile for training runs, Cloud Build triggers, GCP data storage bucket, and Vertex AI training runs. Created data preprocessing, dataloaders, and model training scripts for repository setup.
+
+Student s212958 coded the transformers model structure (model.py), training process and integration to Pytorch Lightning Trainer (train model.py), and data fetching and formatting (load dataset.py). implememted unit tests and configured flake8, coverage and isort tests for the continuous integration of the project Created the FastAPI docker image and deployed it using Cloud Run in GCP.
+
+Student s212957 implemented a FastAPI service to run predict model.py on the latest trained model in the source code. Built the FastAPI dockerfile with s212958. Was responsible for deploying the FastAPI service using Cloud Run in GCP. 
+
+The answer above lists each student's main contributions, but all students contributed equally and were involved in most or all aspects of the project.
+
