@@ -42,11 +42,16 @@ Project Organization
     ├── LICENSE
     ├── Makefile           <- Makefile with commands like `make data` or `make train`
     ├── README.md          <- The top-level README for developers using this project.
+    ├── dvc.yaml           <- 
     ├── data
     │   ├── external       <- Data from third party sources.
     │   ├── interim        <- Intermediate data that has been transformed.
     │   ├── processed      <- The final, canonical data sets for modeling.
+    │   │   └── test.csv
+    │   │   └── train.csv
     │   └── raw            <- The original, immutable data dump.
+    │   │   └── test.csv
+    │   │   └── train.csv
     │
     ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
     │
@@ -76,11 +81,26 @@ Project Organization
     │   │
     │   ├── models         <- Scripts to train models and then use trained models to make
     │   │   │                 predictions
+    │   │   ├── load_data.py
+    │   │   ├── model.py
     │   │   ├── predict_model.py
-    │   │   └── train_model.py
+    │   │   ├── train_model.py
+    │   │   ├── checkpoint.pth
+    │   │   ├── outputs    <- Holds outputs for all training experiments 
+    │   │   └── config
+    |   │      └── default_config.yaml
+    │   │      └── experiment  <- Holds experiments configs 
     │   │
     │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
     │       └── visualize.py
+    │   └── API            <- Scripts to create FastAPI
+    │       └── main.py
+    │       └── predictions.csv
+    ├── tests                <- 
+    │   ├── __init__.py
+    │   ├── _test_api.py
+    │   ├── test_data.py
+    │   └── test_model.py
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 
