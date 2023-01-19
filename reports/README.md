@@ -486,7 +486,11 @@ It returns a JSON object containing the numeric id of the prediction and the str
 >
 > Answer:
 
---- question 23 fill here ---
+We did not set up monitoring of the system beyond what comes with Google Cloud. 
+
+It might have been beneficial to implement some monitoring to detect data drifting. It could help us identify if the distribution of the incoming data started drifting away from the distribution of the data the model was trained on. In our case, the input data is textual which makes its distribution more complicated to profile. We could instead watch out for data drifting in the output classes, but that might give us very limited information. 
+
+There are some built-in monitoring tools in the cloud for the service. For example, it keeps track of the number of incoming requests and usage of resources. For now, we only get a very limited number of requests, but for future tasks, it is very important to keep track of this as Google Cloud charges for each request excessing the free limit. Similarly, we are charged for the usage of resources (CPU, GPU etc) and thus it is important to watch out for that in order to figure how much resources we need and adjust it according to what we are willing to pay.
 
 ### Question 24
 
