@@ -254,7 +254,7 @@ Using branches would have been helpful as each group member would have had their
 > Answer: 
 
 
-We used DVC for version control of our training and validation data as well as our models after training. We used Google Cloud Buckets to store our data remotely and in the real-time runtime (when building our Docker files) we called DVC to pull the data before performing training or using other aspects of the pipeline. Doing it like this we get version control on the data and minimize the image size generated when the Docker file is run. This helped us minimize issues that had to do with the data accessing part of our pipeline when running in the cloud. Even though using version control for the data in a project implemented over a short period of time we were already considering altering the data a bit so when we reduced the data it came in handy to be using DVC.
+We used DVC for version control of our training and validation data as well as our trained models. We used Google Cloud Buckets to store our data remotely and in the real-time runtime (when building our Docker files) we called DVC to pull the data before performing training or using other aspects of the pipeline. Doing it like this we get version control on the data and minimize the image size generated when the Docker file is run. This helped us minimize issues that had to do with the data accessing part of our pipeline when running in the cloud. Even though using version control for the data in a project implemented over a short period of time we were already considering altering the data a bit so when we reduced the data it came in handy to be using DVC.
 
 ### Question 11
 
@@ -295,7 +295,11 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 >
 > Answer: 
 
-To make it easier to configure our experiments, we used config files. Hydra is the configuration tool that we used; it keeps track of hyperparameters as well as wandb parameters. Each experiment file is located in the following folder: src/models/config/experiment and, in order to try out different experiments, the following must be typed into the terminal: python model train.py experiment=exp3
+To make it easier to configure our experiments, we used config files. Hydra is the configuration tool that we used; it keeps track of hyperparameters as well as wandb parameters. Each experiment file is located in the following folder: `src/models/config/experiment` and, in order to try out different experiments, the following must be typed into the terminal: 
+
+```bash
+python model train.py experiment=exp3
+```
 
 
 ### Question 13
@@ -311,7 +315,7 @@ To make it easier to configure our experiments, we used config files. Hydra is t
 >
 > Answer: 
 
-We use wandb to track each experiment.  We added the config from the experiment yaml file for each experiment to the wandb initialize. We know which hyperparameters and wandb parameters were used when training the model because wandb generates an output config file containing the hyperparameters and wandb parameters used. To reproduce an experiment, navigate to the src/models/outputs folder and select the experiment you want to run. There is a folder named files for each run that contains the config file. That file contains the necessary information; one would need to look at the value in the _parent section, copy the value, and create a new yaml experiment file in src/models/config/experiment.
+We use wandb to track each experiment.  We added the config from the experiment yaml file for each experiment to the wandb initialize. We know which hyperparameters and wandb parameters were used when training the model because wandb generates an output config file containing the hyperparameters and wandb parameters used. To reproduce an experiment, navigate to the `src/models/outputs` folder and select the experiment you want to run. There is a folder named files for each run that contains the config file. That file contains the necessary information; one would need to look at the value in the `_parent` section, copy the value, and create a new yaml experiment file in `src/models/config/experiment`.
 
 ### Question 14
 
@@ -346,9 +350,11 @@ We use wandb to track each experiment.  We added the config from the experiment 
 
 We used Docker for a few different tasks in this project. We created a training image that is used to run a container that we can then use to train the model. We also created a deployment image that was used to as a part of the FastAPI used in the Cloud Run setup. Additionally, we created a prediction image that could be used to make a prediction container for the model but decided to only include the deployment image since both images were being used to make the same predictions. Running our docker images is very straight forward as they take in very few additional arguments. To run the training image with the hydra config file `exp4.yaml` you would only need to run the following commands:
 
-`$ docker pull gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer:latest`
+```bash
+$ docker pull gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer:latest
    
-`$ docker run --name <container_name> gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer:latest experiment=exp4`
+$ docker run --name <container_name> gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer:latest experiment=exp4
+```
 
 ### Question 16
 
@@ -364,7 +370,7 @@ We used Docker for a few different tasks in this project. We created a training 
 > Answer: 
 
 
-In most cases, when we came across some issues, we were able to solve them by looking into what the error message said in the terminal and using Google to find answers to our questions. We didn't use the python debugger since we didn't feel like we needed it. When profiling our model, we relied on the SimpleProfiler that is included in the pytorch lightning profiler package. Both the activities that consumed the majority of the running time and the total number of calls made logical sense. It's possible that we could have done more to optimize the code, but after using pytorch lighting, we feel like the results are a lot more satisfying.
+In most cases, when we came across some issues, we were able to solve them by looking into what the error message said in the terminal and using Google to find answers to our questions. We didn't use the python debugger since we didn't feel like we needed it. When profiling our model, we relied on the `SimpleProfiler` that is included in the pytorch lightning profiler package. Both the activities that consumed the majority of the running time and the total number of calls made logical sense. It's possible that we could have done more to optimize the code, but after using pytorch lighting, we feel like the results are a lot more satisfying.
 
 ## Working in the cloud
 
@@ -382,7 +388,7 @@ In most cases, when we came across some issues, we were able to solve them by lo
 > Answer: 
 	
 	
-The GCP services we used for our project were Bucket, Vertex AI, Cloud Build, Container Registry and Cloud Run. We used Buckets to store our data and linked the Buckets to our GitHub repository for data version control. The Vertex AI was used to perform training runs to train the model, the Cloud Build was linked to the Github repository to automatically build docker images and the Container Registry was used to store these images. Finally, the Cloud Run was used to deploy our FastAPI application.
+The GCP services we used for our project were `Bucket`, `Vertex AI`, `Cloud Build`, `Container Registry` and `Cloud Run`. We used Buckets to store our data and linked the Buckets to our GitHub repository for data version control. The Vertex AI was used to perform training runs to train the model, the Cloud Build was linked to the Github repository to automatically build docker images and the Container Registry was used to store these images. Finally, the Cloud Run was used to deploy our `FastAPI` application.
 
 ### Question 18
 
@@ -398,7 +404,7 @@ The GCP services we used for our project were Bucket, Vertex AI, Cloud Build, Co
 > Answer: 
 	
 
-We didn’t end up using the Compute Engine service to create any virtual machines for our project but we did use the Vertex AI service. We used Vertex AI to create custom jobs that were used to train our model. By creating custom jobs in Vertex AI, a virtual machine instance is automatically created which is then used to run the container specified at the job creation. The configuration for the custom job is stored in the config.yaml file in the root of our git repository. All custom jobs were created with machine type `n1-highmem-2` and used to run our custom `trainer` Docker container, which is stored in the Container Registry. A total of 10 custom job runs were created through Vertex AI.
+We didn’t end up using the Compute Engine service to create any virtual machines for our project but we did use the `Vertex AI` service. We used Vertex AI to create custom jobs that were used to train our model. By creating custom jobs in Vertex AI, a virtual machine instance is automatically created which is then used to run the container specified at the job creation. The configuration for the custom job is stored in the config.yaml file in the root of our git repository. All custom jobs were created with machine type `n1-highmem-2` and used to run our custom `trainer` Docker container, which is stored in the Container Registry. A total of 10 custom job runs were created through Vertex AI.
 
 ### Question 19
 
@@ -493,7 +499,7 @@ It returns a JSON object containing the numeric id of the prediction and the str
 >
 > Answer:
 
-Group member s212963 used 17,51 credits, group member s212958 used 30,78 credits, group member s212951 used 15,2 credits and group member s212957  used 50 credits, in total  credits was spend during development. The service deployment is free for the first 50 hours so that didn‘t start to take down our credits. The service costing them most having Virtual Machine Instances running.
+Group member s212963 used `17.51` credits, group member s212958 used `30.78` credits, group member s212951 used `15.2` credits and group member s212957  used `50` credits, in total  credits was spent during development. The service deployment is free for the first 50 hours so that didn‘t start to take down our credits. The service that ended up costing the most was having Virtual Machine Instances running.
 
 ## Overall discussion of project
 
@@ -530,9 +536,9 @@ Group member s212963 used 17,51 credits, group member s212958 used 30,78 credits
 	
 The struggles were varied and touched on nearly all aspects of the project. The initial struggle was loading and formatting the data in the correct tensor format to fit the criteria of the model and make the batches append to the input tensors, the standard arrangement was that it created a list of tensors. This took some time, but once the correct format was in place, the training went well. Creating the source code took longer than expected but with the help of profilers and Pytorch Lightning, we managed to increase the transparency of the src code. Incorporating Pytorch Lightning also took some time due to the model predicting in lists but not tensors during the validation step of the Trainer. This could be fixed by using argmax and softmax functions from torch but not NumPy and sklearn as used in some tutorials of the course. Other than that implementation of the source code went well. 
 
-We had some issues with docker, to start off accessing data using DVC in docker files was causing major issues. Building both the docker image for the training and API required many tries also due to DVC issues. We had to work with multiple buckets to store data(one for training and another that stored the trained model for testing) this required some customization of the setup in the docker file. 
+We had some issues with Docker, to start off accessing data using DVC in Docker files was causing major issues. Building both the Docker image for the training and API required many tries also due to DVC issues. We had to work with multiple buckets to store data (one for training and another that stored the trained model for testing) this required some customization of the setup in the Docker file. 
 
-In the cloud we had back down from letting the trigger be active since for some unknown reasons would get stuck at DVC pull, we debugged and tried a lot of fixes(also consulting Nicki and TAs) out for an entire day but nothing seemed to work unless we would give up DVC which we did not want to do. Getting VertexAI to run in the cloud did not go smoothly due to conflicts between the Pytorch Lightning logger and Vertex AI logs, this was fixed by removing the progress bars of Lightning loggers.
+In the cloud we had back down from letting the trigger be active since for some unknown reasons would get stuck at DVC pull, we debugged and tried a lot of fixes (also consulting Nicki and TAs) out for an entire day but nothing seemed to work unless we would give up DVC which we did not want to do. Getting Vertex AI to run in the cloud did not go smoothly due to conflicts between the Pytorch Lightning logger and Vertex AI logs, this was fixed by removing the progress bars of Lightning loggers.
 
 ### Question 27
 
