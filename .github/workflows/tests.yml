@@ -49,13 +49,11 @@ jobs:
       env:
         GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
 
-
     - name: Test with pytest
       run: |
         pip install pytest
         pytest -v
 
-	
     - name: Generate Report
       run: |
         pip install coverage
