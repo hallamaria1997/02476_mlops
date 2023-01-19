@@ -1,4 +1,5 @@
 02476 ML Ops -- Final Project
+
 *Sentiment Classification of Tweets*
 ==============================
 [![Code Tests](https://github.com/hallamaria1997/02476_mlops/actions/workflows/tests.yml/badge.svg)](https://github.com/hallamaria1997/02476_mlops/actions/workflows/tests.yml)
