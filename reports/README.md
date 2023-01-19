@@ -103,13 +103,17 @@ end of the project.
 ### Question 1
 > **Enter the group number you signed up on <learn.inside.dtu.dk>**
 >
-> Answer: Awesome 10
+> Answer: 
+ 
+Awesome 10
 
 
 ### Question 2
 > **Enter the study number for each member in the group**
 >
-> Answer: s212963, s212958, s212951, s212957
+> Answer: 
+
+s212963, s212958, s212951, s212957
 
 ### Question 3
 > **What framework did you choose to work with and did it help you complete the project?**
@@ -118,7 +122,9 @@ end of the project.
 >
 > Answer: 
 
-We used Transformers for our Twitter sentiment classification model. Transformers provides a pre-trained model called cardiffnlp/twitter-roberta-base-sentiment-latest which is trained to assess the sentiment of tweets. We used this model as our base and performed some training on the last layer with data from Kaggle. Transformers helped us a great deal with the documentation and tutorials for their specific models. We used the Transformers Tokenizer to cast each tweet to tensors of input id and attention mask. The input id creates a tensor that scores each word of the tweet and appends to a tensor and the attention mask is a tensor that indicates the importance of each word(0 or 1). We also used the Transformers Config of the model to cast labels between keys and values(0-neutral). Finally, we used Transformers AutoModelForSequenceClassification to provide a classification element to the output of the model, using 3 classes. Overall the framework reduced the time required to train an efficient model along with the methods of the model supplying necessary aspects for evaluating the model.
+We used Transformers for our Twitter sentiment classification model. Transformers provides a pre-trained model called cardiffnlp/twitter-roberta-base-sentiment-latest which is trained to assess the sentiment of tweets. We used this model as our base and performed some training on the last layer with data from Kaggle. 
+
+Transformers helped us a great deal with the documentation and tutorials for their specific models. We used the Transformers Tokenizer to cast each tweet to tensors of input id and attention mask. The input id creates a tensor that scores each word of the tweet and appends to a tensor and the attention mask is a tensor that indicates the importance of each word (0 or 1). We also used the Transformers Config of the model to cast labels between keys and values (0-neutral). Finally, we used Transformers AutoModelForSequenceClassification to provide a classification element to the output of the model, using 3 classes. Overall the framework reduced the time required to train an efficient model along with the methods of the model supplying necessary aspects for evaluating the model.
 
 ## Coding environment
 
@@ -138,7 +144,7 @@ We used Transformers for our Twitter sentiment classification model. Transformer
 > Answer: 
 
 
-We used a Conda environment for managing our dependencies. A clean Conda environment was created in the beginning to keep track of all packages installed over the course of the project. To extract a list of dependencies, a requirements.txt file was generated using pipreqs. However, some package versions later needed to be manually changed to make sure they worked with Docker. A new member joining the project would simply have to execute the following commands to get a copy of the environment:
+We used a Conda environment for managing our dependencies. A clean Conda environment was created in the beginning to keep track of all packages installed over the course of the project. To extract a list of dependencies, a `requirements.txt` file was generated using pipreqs. However, some package versions later needed to be manually changed to make sure they worked with Docker. A new member joining the project would simply have to execute the following commands to get a copy of the environment:
  
 `$ git clone [https://github.com/hallamaria1997/02476_mlops.git]`
 
@@ -164,7 +170,7 @@ This would provide the new member with the current versions of code files, data 
 > Answer: 
 
 
-We initialized the git repo using cookiecutter template at the beginning of the project work. We did not manage to fill out every folder of the template but managed to make good use of the structure. We didn't use the notebooks, references nor docs folders but filled out entire or subsets of all other folders. We had to add .dvc/ folder for Data Version Control, .github/ folder to manage the workflows of Github, tests/ to write the unit tests on our source code and in the src/model/ folder we had to add a config folder to manage our experiments and the outputs from WandB. The overall structure of the code follows the standard format, source code is stored under src and the data is managed in the data folder through DVC. The model, training_model,  predict_model and load_data is all located in src/models and the model is saved under models/once the training is done.
+We initialized the git repo using cookiecutter template at the beginning of the project work. We did not manage to fill out every folder of the template but managed to make good use of the structure. We didn't use the notebooks, references nor docs folders but filled out entire or subsets of all other folders. We had to add `.dvc/` folder for Data Version Control, `.github/` folder to manage the workflows of Github, `tests/` to write the unit tests on our source code and in the `src/model/` folder we had to add a config folder to manage our experiments and the outputs from WandB. The overall structure of the code follows the standard format, source code is stored under `src` and the data is managed in the `data` folder through DVC. The model, training_model,  predict_model and load_data is all located in `src/models` and the model is saved under `models/` once the training is done.
 
 ### Question 6
 
@@ -246,7 +252,7 @@ Using branches would have been helpful as each group member would have had their
 > Answer: 
 
 
-We used DVC for version control of our training and validation data. We used Google Cloud Buckets to store our data remotely and in the real-time runtime(when building our docker files) we called DVC to pull the data before performing training or using other aspects of the pipeline. Doing it like this we get version control on the data and minimize the image size generated when the docker file is run. This helped us minimize issues that had to do with the data accessing part of our pipeline when running in the cloud. Even though using version control for the data in a project implemented over a short period of time we were already considering altering the data a bit so when we reduced the data it came in handy to be using DVC.
+We used DVC for version control of our training and validation data. We used Google Cloud Buckets to store our data remotely and in the real-time runtime (when building our Docker files) we called DVC to pull the data before performing training or using other aspects of the pipeline. Doing it like this we get version control on the data and minimize the image size generated when the docker file is run. This helped us minimize issues that had to do with the data accessing part of our pipeline when running in the cloud. Even though using version control for the data in a project implemented over a short period of time we were already considering altering the data a bit so when we reduced the data it came in handy to be using DVC.
 
 ### Question 11
 
@@ -525,8 +531,6 @@ The struggles were varied and touched on nearly all aspects of the project. The 
 We had some issues with docker, to start off accessing data using DVC in docker files was causing major issues. Building both the docker image for the training and API required many tries also due to DVC issues. We had to work with multiple buckets to store data(one for training and another that stored the trained model for testing) this required some customization of the setup in the docker file. 
 
 In the cloud we had back down from letting the trigger be active since for some unknown reasons would get stuck at DVC pull, we debugged and tried a lot of fixes(also consulting Nicki and TAs) out for an entire day but nothing seemed to work unless we would give up DVC which we did not want to do. Getting VertexAI to run in the cloud did not go smoothly due to conflicts between the Pytorch Lightning logger and Vertex AI logs, this was fixed by removing the progress bars of Lightning loggers.
-
---- question 26 fill here ---
 
 ### Question 27
 
