@@ -246,7 +246,7 @@ For the formatting tests, we use the library ``flake8``, that checks if the code
 
 We use the package ``isort`` to test the imports. That checks if the imports are correctly set up in terms of multiple imports, types and sections.
 
-The functional tests are run on ubuntu-latest, macos-latest and windows-latest, and the formatting and import tests are run on ubuntu-latest. We do not utilise pre-commits, so the code can be committed and pushed without passing the tests. 
+The functional tests are run on ubuntu-latest, macos-latest and windows-latest, and the formatting and import tests are run on ubuntu-latest. We make use of caching to speed up the process of installing dependencies. We do not utilise pre-commits, so the code can be committed and pushed without passing the tests. 
 
 [Here](https://github.com/hallamaria1997/02476_mlops/actions/runs/3940581840) you can see one workflow action on our git repository including the three kinds of tests.
 
