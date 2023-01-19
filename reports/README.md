@@ -80,8 +80,8 @@ end of the project.
 * [x] Create a trigger workflow for automatically building your docker images
 * [x] Get your model training in GCP using either the Engine or Vertex AI
 * [x] Create a FastAPI application that can do inference using your model
-* [ ] If applicable, consider deploying the model locally using torchserve
-* [ ] Deploy your model in GCP using either Functions or Run as the backend
+* [x] If applicable, consider deploying the model locally using torchserve
+* [x] Deploy your model in GCP using either Functions or Run as the backend
 
 ### Week 3
 
@@ -94,9 +94,9 @@ end of the project.
 
 ### Additional
 
-* [ ] Revisit your initial project description. Did the project turn out as you wanted?
-* [ ] Make sure all group members have a understanding about all parts of the project
-* [ ] Uploaded all your code to github
+* [x] Revisit your initial project description. Did the project turn out as you wanted?
+* [x] Make sure all group members have a understanding about all parts of the project
+* [x] Uploaded all your code to github
 
 ## Group information
 
@@ -140,8 +140,8 @@ end of the project.
 > `$ dvc pull`
 > 
 > `$ pip install -e .`
-
-This would provide the new member with the current versions of code files, data as well as all the packages needed to be able to run the code.
+>
+> This would provide the new member with the current versions of code files, data as well as all the packages needed to be able to run the code.
 
 
 --- question 4 fill here ---
@@ -240,13 +240,13 @@ Using branches would have been helpful as each group member would have had their
 > *... . In particular for our ..., we used ... .An example of a triggered workflow can be seen here: <weblink>*
 >
 > Answer: We are using three kinds of unit testing: We run functional tests on the code, formatting tests and import tests. 
-      For the functional tests, we use the ``pytest`` package and run tests on the model, the data and the API. The model tests assert that the model uses the correct architecture and that it returns logits of the correct shape. The data tests make sure that the data loader returns the correct batch sizes, both for the train and test sets. The API tests make sure that the endpoints work as intended and return the correct status codes, 200 for OK and 404 for not found. In addition, it asserts that the query is saved to a file. The tests are marked with ``skipif`` if the path to the data or the checkpoint do not exist.
+      For the functional tests, we use the ``pytest`` package and run tests on the model, the data and the API. The model tests assert that the model uses the correct architecture and that it returns logits of the correct shape. The data tests make sure that the data loader returns the correct batch sizes, both for the train and test sets. The API tests are not used in the final revision because path issues made it more complicated, but they made sure that the endpoints worked as intended and returned the correct status codes, 200 for OK and 404 for not found. In addition, it asserted that the query tweet was saved to a file. The tests were marked with ``skipif`` if the path to the data or the checkpoint didn't exist.
 
 For the formatting tests, we use the library ``flake8``, that checks if the code is formatted according to the PEP8 style guide. It checks line length, whitespaces around operators and number of line breaks after classes and methods, among other checks.
 
 We use the package ``isort`` to test the imports. That checks if the imports are correctly set up in terms of multiple imports, types and sections.
 
-The functional tests are run on ubuntu-latest, macos-latest and windows-latest, and the formatting and import tests are run on ubuntu-latest. We do not utilise pre-commits, so the code can be committed and pushed without passing the tests. 
+The functional tests are run on ubuntu-latest, macos-latest and windows-latest, and the formatting and import tests are run on ubuntu-latest. We make use of caching to speed up the process of installing dependencies. We do not utilise pre-commits, so the code can be committed and pushed without passing the tests. 
 
 [Here](https://github.com/hallamaria1997/02476_mlops/actions/runs/3940581840) you can see one workflow action on our git repository including the three kinds of tests.
 
@@ -306,11 +306,11 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 > *For our project we developed several images: one for training, inference and deployment. For example to run the*
 > *training docker image: `docker run trainer:latest lr=1e-3 batch_size=64`. Link to docker file: <weblink>*
 >
-> Answer: We used Docker for a few different tasks in this project. We created a training image that is used to run a container that we can then use to train the model. We also created a deployment image that was used to as a part of the FastAPI used in the Cloud Run setup. Additionally, we created a prediction image that could be used to make a prediction container for the model but decided to only include the deployment image since both images were being used to make the same predictions. Running our docker images is very straight forward as they take in very few additional arguments. To run the training image with the default hydra config file you would only need to run the following commands:
+> Answer: We used Docker for a few different tasks in this project. We created a training image that is used to run a container that we can then use to train the model. We also created a deployment image that was used to as a part of the FastAPI used in the Cloud Run setup. Additionally, we created a prediction image that could be used to make a prediction container for the model but decided to only include the deployment image since both images were being used to make the same predictions. Running our docker images is very straight forward as they take in very few additional arguments. To run the training image with the hydra config file `exp4.yaml` you would only need to run the following commands:
 >
 > `$ docker pull gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer:latest`
 >    
-> `$ docker run --name <container_name> gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer:latest`
+> `$ docker run --name <container_name> gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer:latest experiment=exp4`
 
 --- question 15 fill here ---
 
@@ -342,7 +342,7 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 > Example:
 > *We used the following two services: Engine and Bucket. Engine is used for... and Bucket is used for...*
 >
-> Answer:
+> Answer: The GCP services we used for our project were Bucket, Vertex AI, Cloud Build, Container Registry and Cloud Run. We used Buckets to store our data and linked the Buckets to our GitHub repository for data version control. The Vertex AI was used to perform training runs to train the model, the Cloud Build was linked to the Github repository to automatically build docker images and the Container Registry was used to store these images. Finally, the Cloud Run was used to deploy our FastAPI application.
 
 --- question 17 fill here ---
 

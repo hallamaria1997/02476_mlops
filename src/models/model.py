@@ -43,9 +43,9 @@ class SentimentModel(LightningModule):
         pred = pred.logits
         val_loss = self.criterion(pred, labels)
         self.log("loss", val_loss, prog_bar=False)
- 
+
         with torch.no_grad():
-            preds= nn.functional.softmax(pred, dim = 1).argmax(1)
+            preds = nn.functional.softmax(pred, dim=1).argmax(1)
             correct = (preds == labels).sum()
             accuracy = correct / len(labels)
         self.log("val_accuracy", accuracy, prog_bar=False)
@@ -57,10 +57,10 @@ class SentimentModel(LightningModule):
         accuracy = torch.stack([x["accuracy"] for x in outputs]).mean()
         self.log("val_loss", loss, prog_bar=False)
         self.log("accuracy", accuracy)
- 
+
         wandb.log({"val_loss": loss})
         wandb.log({"val_accuracy": accuracy})
- 
+
         return loss
 
     def configure_optimizers(self, lr=1e-5) -> any:

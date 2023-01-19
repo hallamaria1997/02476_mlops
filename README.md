@@ -1,5 +1,11 @@
-02476 ML Ops -- Final Project
+# 02476 ML Ops -- Final Project
+
+*Sentiment Classification of Tweets*
 ==============================
+[![Code Tests](https://github.com/hallamaria1997/02476_mlops/actions/workflows/tests.yml/badge.svg)](https://github.com/hallamaria1997/02476_mlops/actions/workflows/tests.yml)
+[![isort](https://github.com/hallamaria1997/02476_mlops/actions/workflows/isort.yml/badge.svg)](https://github.com/hallamaria1997/02476_mlops/actions/workflows/isort.yml)
+[![flake8](https://github.com/hallamaria1997/02476_mlops/actions/workflows/flake8.yml/badge.svg)](https://github.com/hallamaria1997/02476_mlops/actions/workflows/flake8.yml)
+
 
 # Sentiment Classification of Tweets -- Project Description
 - Halla María Hjartardóttir: s212958
@@ -42,6 +48,7 @@ Project Organization
     ├── LICENSE
     ├── Makefile           <- Makefile with commands like `make data` or `make train`
     ├── README.md          <- The top-level README for developers using this project.
+    ├── dvc.yaml           <- 
     ├── data
     │   ├── external       <- Data from third party sources.
     │   ├── interim        <- Intermediate data that has been transformed.
@@ -95,6 +102,11 @@ Project Organization
     │   └── API            <- Scripts to create FastAPI
     │       └── main.py
     │       └── predictions.csv
+    ├── tests                <- Scripts for testing using pytest (pytest tests/)
+    │   ├── __init__.py
+    │   ├── _test_api.py
+    │   ├── test_data.py
+    │   └── test_model.py
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 

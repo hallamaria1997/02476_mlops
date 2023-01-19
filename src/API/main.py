@@ -5,6 +5,7 @@ from src.models.predict_model import Predict
 app = FastAPI()
 p = Predict(model_path='../../models/checkpoint.pth')
 
+
 def save_tweet(tweet: str, pred_id: int, pred_label: str,
                file_path: str = '') -> None:
     """Saves the received tweet to a database, along with the predicted
