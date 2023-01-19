@@ -388,6 +388,8 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 >
 > Answer:
 ![build_history](figures/build_history.png)
+>
+> As you can see from the figure above, the cloud build triggers were working while the data was still stored in the GitHub repository. However, once the DVC was completed and integrated into the project the builds started failing. The reason for this is that when built in a Cloud Build trigger, the dvc pull part of the dockerfile times out. We looked into this along with Nicki through a Slack thread but no solution was found. One other group had faced the same issue and fixed it by mounting the data from a gcp bucket. However, that would have meant giving up data version controlling which we decided against.
 
 
 ### Question 22

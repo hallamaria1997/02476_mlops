@@ -27,12 +27,12 @@ def train(config: DictConfig) -> None:
 
     model = SentimentModel()
 
-    wandb.init(mode=config.experiment.wandb.mode, 
-               config = config.experiment.hyper_parameters)
+    wandb.init(mode=config.experiment.wandb.mode,
+               config=config.experiment.hyper_parameters)
 
     train_data = make_dataloader(filepath="/data/raw/train.csv",
-                               batch_size=batch_size,
-                               n_rows=n_rows)
+                                 batch_size=batch_size,
+                                 n_rows=n_rows)
     val_data = make_dataloader(filepath="/data/raw/test.csv",
                                batch_size=batch_size,
                                n_rows=n_rows)
@@ -74,7 +74,7 @@ def train(config: DictConfig) -> None:
 
     torch.save(model.state_dict(), "/models/checkpoint.pth")
     print("Model saved to models/checkpoint.pth")
-   
+
     storage_client = storage.Client(project='dtumlops-tweet-sentiment')
     bucket = storage_client.bucket("trained-twitter-model")
     blob = bucket.blob("/models/checkpoint.pth")
