@@ -9,6 +9,7 @@ from pytorch_lightning import Trainer
 from pytorch_lightning.loggers.wandb import WandbLogger
 from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
 from pytorch_lightning.profiler import SimpleProfiler
+from google.cloud import storage
 
 
 @hydra.main(config_path="config", config_name='default_config.yaml')
@@ -70,9 +71,18 @@ def train(config: DictConfig) -> None:
     )
 
     trainer.fit(model, train_dataloaders=train_data, val_dataloaders=val_data)
-
+    
     torch.save(model.state_dict(), "/models/checkpoint.pth")
-    print("saved to model/checkpoint.pth")
+    print("Model saved to models/checkpoint.pth")
+    
+    storage_client = storage.Client(project='dtumlops-tweet-sentiment')
+    bucket = storage_client.bucket("trained-twitter-model")
+    blob = bucket.blob("/models/checkpoint.pth")
+
+    print("Uploading to cloud")
+    blob.upload_from_filename("/models/checkpoint.pth", timeout=14400)
+    
+    print("Model saved to GCP bucket!")
 
 
 if __name__ == "__main__":
