@@ -167,7 +167,7 @@ end of the project.
 >
 > Answer length: 50-100 words.
 >
-> Answer: We followed the implementation of isort and flake8 quality/format. Following coding standards in larger projects is important to make sure that all coders are following the same guideline, this ensures the maintenance of readability and consistency in the project. This is also important for the reproducibility of the code and can make it easier to debug and detect errors for someone that didn't write the code.
+> Answer: We followed the isort and flake8 quality/format styling. We also improved our code by typing it to make it easier to read.  Following coding standards in larger projects is important to make sure that all coders are following the same guideline, this ensures the maintenance of readability and consistency in the project. This is also important for the reproducibility of the code and can make it easier to debug and detect errors for someone that didn't write the code.
 
 ## Version control
 
@@ -240,13 +240,13 @@ Using branches would have been helpful as each group member would have had their
 > *... . In particular for our ..., we used ... .An example of a triggered workflow can be seen here: <weblink>*
 >
 > Answer: We are using three kinds of unit testing: We run functional tests on the code, formatting tests and import tests. 
-      For the functional tests, we use the ``pytest`` package and run tests on the model, the data and the API. The model tests assert that the model uses the correct architecture and that it returns logits of the correct shape. The data tests make sure that the data loader returns the correct batch sizes, both for the train and test sets. The API tests make sure that the endpoints work as intended and return the correct status codes, 200 for OK and 404 for not found. In addition, it asserts that the query is saved to a file. The tests are marked with ``skipif`` if the path to the data or the checkpoint do not exist.
+      For the functional tests, we use the ``pytest`` package and run tests on the model, the data and the API. The model tests assert that the model uses the correct architecture and that it returns logits of the correct shape. The data tests make sure that the data loader returns the correct batch sizes, both for the train and test sets. The API tests are not used in the final revision because path issues made it more complicated, but they made sure that the endpoints worked as intended and returned the correct status codes, 200 for OK and 404 for not found. In addition, it asserted that the query tweet was saved to a file. The tests were marked with ``skipif`` if the path to the data or the checkpoint didn't exist.
 
 For the formatting tests, we use the library ``flake8``, that checks if the code is formatted according to the PEP8 style guide. It checks line length, whitespaces around operators and number of line breaks after classes and methods, among other checks.
 
 We use the package ``isort`` to test the imports. That checks if the imports are correctly set up in terms of multiple imports, types and sections.
 
-The functional tests are run on ubuntu-latest, macos-latest and windows-latest, and the formatting and import tests are run on ubuntu-latest. We do not utilise pre-commits, so the code can be committed and pushed without passing the tests. 
+The functional tests are run on ubuntu-latest, macos-latest and windows-latest, and the formatting and import tests are run on ubuntu-latest. We make use of caching to speed up the process of installing dependencies. We do not utilise pre-commits, so the code can be committed and pushed without passing the tests. 
 
 [Here](https://github.com/hallamaria1997/02476_mlops/actions/runs/3940581840) you can see one workflow action on our git repository including the three kinds of tests.
 
@@ -342,7 +342,7 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 > Example:
 > *We used the following two services: Engine and Bucket. Engine is used for... and Bucket is used for...*
 >
-> Answer: The GCP services we used for our project were Bucket, Vertex AI, Cloud Build, Container Registry and Cloud Run. We used Buckets to store our data and linked the Buckets to our GitHub repository for data version control. The Vertex AI was used to perform training runs to train the model, the Cloud Build was linked to the Github repository to automatically build docker images and the Container Registry was used to store these images. Finally, the Cloud Run was used to deploy our **model application??**.
+> Answer: The GCP services we used for our project were Bucket, Vertex AI, Cloud Build, Container Registry and Cloud Run. We used Buckets to store our data and linked the Buckets to our GitHub repository for data version control. The Vertex AI was used to perform training runs to train the model, the Cloud Build was linked to the Github repository to automatically build docker images and the Container Registry was used to store these images. Finally, the Cloud Run was used to deploy our FastAPI application.
 
 --- question 17 fill here ---
 
@@ -367,6 +367,8 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 > **You can take inspiration from [this figure](figures/bucket.png).**
 >
 > Answer:
+![buckets](figures/buckets.png)
+![bucket_content](figures/bucket_content.png)
 
 --- question 19 fill here ---
 
@@ -376,8 +378,8 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 > **You can take inspiration from [this figure](figures/registry.png).**
 >
 > Answer:
+![container_registry1](figures/container_registry1.png)
 
---- question 20 fill here ---
 
 ### Question 21
 
@@ -385,8 +387,8 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 > **your project. You can take inspiration from [this figure](figures/build.png).**
 >
 > Answer:
+![build_history](figures/build_history.png)
 
---- question 21 fill here ---
 
 ### Question 22
 
@@ -402,7 +404,26 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 >
 > Answer:
 
---- question 22 fill here ---
+We did manage to deploy both the training process and the API. For training the model, we created and built a dockerfile locally and pushed it to the cloud. It was then deployed using Vertex AI.
+
+For the API, a dockerfile was built locally and pushed to the cloud, where it was deployed as a service in Cloud Run.
+
+The service has two endpoints: the root, which returns a message about the usage, and ``/predict/?tweet=<query string>``. The ``predict`` endpoint is invoked using either the curl command:
+
+	curl -X 'GET' \
+	  'https://twitter-sentiment-api-ptfj6iu6wa-ew.a.run.app/predict/?tweet=trying%20the%20twitter%20sentiment%20api' \
+	  -H 'accept: application/json'
+
+or with a request URL in browser:
+
+[https://twitter-sentiment-api-ptfj6iu6wa-ew.a.run.app/predict/?tweet=trying%20the%20twitter%20sentiment%20api](https://twitter-sentiment-api-ptfj6iu6wa-ew.a.run.app/predict/?tweet=trying%20the%20twitter%20sentiment%20api)
+
+It returns a JSON object containing the numeric id of the prediction and the string representation of the label (0=negative, 1=neutral, 2=positive). Example:
+	
+	{
+	  "pred_id": "1",
+	  "pred_label": "neutral"
+	}
 
 ### Question 23
 
