@@ -137,10 +137,6 @@ Transformers helped us a great deal with the documentation and tutorials for the
 >
 > Answer length: 100-200 words
 >
-> Example:
-> *We used ... for managing our dependencies. The list of dependencies was auto-generated using ... . To get a*
-> *complete copy of our development enviroment, one would have to run the following commands*
->
 > Answer: 
 
 
@@ -163,11 +159,6 @@ This would provide the new member with the current versions of code files, data 
 > **code. Did you fill out every folder or only a subset?**
 >
 > Answer length: 100-200 words
->
-> Example:
-> *From the cookiecutter template we have filled out the ... , ... and ... folder. We have removed the ... folder*
-> *because we did not use any ... in our project. We have added an ... folder that contains ... for running our*
-> *experiments.*
 > 
 > Answer: 
 
@@ -196,11 +187,6 @@ We followed the `isort` and `flake8` quality/format styling. We also improved ou
 > **How many tests did you implement and what are they testing in your code?**
 >
 > Answer length: 50-100 words.
->
-> Example:
-> *In total we have implemented X tests. Primarily we are testing ... and ... as these the most critical parts of our*
-> *application but also ... .*
->
 > Answer: 
 
 
@@ -213,10 +199,6 @@ In total, we have implemented 6 tests. Primarily we were testing the data prepro
 >
 > Answer length: 100-200 words.
 >
-> Example:
-> *The total code coverage of code is X%, which includes all our source code. We are far from 100% coverage of our **
-> *code and even if we were then...*
->
 > Answer: 
 
 
@@ -228,10 +210,6 @@ The total code coverage is 69% of our src code, the part that drags the percenta
 > **pull request can help improve version control.**
 >
 > Answer length: 100-200 words.
->
-> Example:
-> *We made use of both branches and PRs in our project. In our group, each member had an branch that they worked on in*
-> *addition to the main branch. To merge code we ...*
 >
 > Answer: 
 
@@ -246,11 +224,7 @@ Using branches would have been helpful as each group member would have had their
 > **control of your data. If no, explain a case where it would be beneficial to have version control of your data.**
 >
 > Answer length: 100-200 words.
->
-> Example:
-> *We did make use of DVC in the following way: ... . In the end it helped us in ... for controlling ... part of our*
-> *pipeline*
->
+
 > Answer: 
 
 
@@ -263,11 +237,6 @@ We used DVC for version control of our training and validation data as well as o
 > **your github actions workflow.**
 >
 > Answer length: 200-300 words.
->
-> Example:
-> *We have organized our CI into 3 separate files: one for doing ..., one for running ... testing and one for running*
-> *... . In particular for our ..., we used ... .An example of a triggered workflow can be seen here: <weblink>*
->
 > Answer: 
 	
 We are using three kinds of unit testing: We run functional tests on the code, formatting tests and import tests. 
@@ -309,11 +278,6 @@ $ python train_model.py experiment=exp3
 > **is lost when running experiments and that your experiments are reproducible?**
 >
 > Answer length: 100-200 words.
->
-> Example:
-> *We made use of config files. Whenever an experiment is run the following happens: ... . To reproduce an experiment*
-> *one would have to do ...*
->
 > Answer: 
 
 We use wandb to track each experiment.  We added the config from the experiment yaml file for each experiment to the wandb initialize. We know which hyperparameters and wandb parameters were used when training the model because wandb generates an output config file containing the hyperparameters and wandb parameters used. To reproduce an experiment, navigate to the `src/models/outputs` folder and select the experiment you want to run. There is a folder named files for each run that contains the config file. That file contains the necessary information; one would need to look at the value in the `_parent` section, copy the value, and create a new yaml experiment file in `src/models/config/experiment`.
@@ -326,11 +290,6 @@ We use wandb to track each experiment.  We added the config from the experiment 
 > **important.**
 >
 > Answer length: 200-300 words + 1 to 3 screenshots.
->
-> Example:
-> *As seen in the first image when have tracked ... and ... which both inform us about ... in our experiments.*
-> *As seen in the second image we are also tracking ... and ...*
->
 > Answer:
 
 Accuracy and loss were the two metrics that we tracked throughout the training and validation processes. It is essential to track these metrics in order to determine whether or not our model is becoming more accurate. Because tracking just one metric at a time can give an inaccurate picture of the process, we need to look at both of them. We seek low loss while maintaining high accuracy. If the accuracy is high but the loss is also high, this indicates that the model is producing large errors for a relatively small portion of the data. On the other hand, if the loss is low but the accuracy is also low, this indicates that we are producing small errors for the majority of the data. It is necessary to state that we had a model that had been pre-trained and had an early stopping method implemented; as a result, doing a last layer training or fine tuning will most likely not improve the model very much and has a high risk of overfitting. 
@@ -343,10 +302,6 @@ Additionally, some of the hyperparameters that were tuned using the hydra config
 > **experiments? Include how you would run your docker images and include a link to one of your docker files.**
 >
 > Answer length: 100-200 words.
->
-> Example:
-> *For our project we developed several images: one for training, inference and deployment. For example to run the*
-> *training docker image: `docker run trainer:latest lr=1e-3 batch_size=64`. Link to docker file: <weblink>*
 >
 > Answer: 
 	
@@ -366,10 +321,6 @@ $ docker run --name <container_name> gcr.io/dtumlops-tweet-sentiment/github.com/
 >
 > Answer length: 100-200 words.
 >
-> Example:
-> *Debugging method was dependent on group member. Some just used ... and others used ... . We did a single profiling*
-> *run of our main code at some point that showed ...*
->
 > Answer: 
 
 
@@ -384,10 +335,6 @@ In most cases, when we came across some issues, we were able to solve them by lo
 > **List all the GCP services that you made use of in your project and shortly explain what each service does?**
 >
 > Answer length: 50-200 words.
->
-> Example:
-> *We used the following two services: Engine and Bucket. Engine is used for... and Bucket is used for...*
->
 > Answer: 
 	
 	
@@ -399,11 +346,6 @@ The GCP services we used for our project were `Bucket`, `Vertex AI`, `Cloud Buil
 > **you used?**
 >
 > Answer length: 100-200 words.
->
-> Example:
-> *We used the compute engine to run our ... . We used instances with the following hardware: ... and we started the*
-> *using a custom container: ...*
->
 > Answer: 
 	
 
@@ -447,11 +389,6 @@ As you can see from the figure above, the cloud build triggers were working whil
 >
 > Answer length: 100-200 words.
 >
-> Example:
-> *For deployment we wrapped our model into application using ... . We first tried locally serving the model, which*
-> *worked. Afterwards we deployed it in the cloud, using ... . To invoke the service an user would call*
-> *`curl -X POST -F "file=@file.json"<weburl>`*
->
 > Answer:
 
 We did manage to deploy both the training process and the API. For training the model, we created and built a dockerfile locally and pushed it to the cloud. It was then deployed using Vertex AI.
@@ -482,10 +419,6 @@ It returns a JSON object containing the numeric id of the prediction and the str
 >
 > Answer length: 100-200 words.
 >
-> Example:
-> *We did not manage to implement monitoring. We would like to have monitoring implemented such that over time we could*
-> *measure ... and ... that would inform us about this ... behaviour of our application.*
->
 > Answer:
 
 We did not set up monitoring of the system beyond what comes with Google Cloud. 
@@ -499,10 +432,6 @@ There are some built-in monitoring tools in the cloud for the service. For examp
 > **How many credits did you end up using during the project and what service was most expensive?**
 >
 > Answer length: 25-100 words.
->
-> Example:
-> *Group member 1 used ..., Group member 2 used ..., in total ... credits was spend during development. The service*
-> *costing the most was ... due to ...*
 >
 > Answer:
 
@@ -519,11 +448,6 @@ Group member s212963 used `17.51` credits, group member s212958 used `30.78` cre
 > **overall steps in figure.**
 >
 > Answer length: 200-400 words
->
-> Example:
->
-> *The starting point of the diagram is our local setup, where we integrated ... and ... and ... into our code.*
-> *Whenever we commit code and puch to github, it auto triggers ... and ... . From there the diagram shows ...*
 >
 > Answer:
 
@@ -543,10 +467,6 @@ The FastAPI service was deployed in a Cloud Run. The code pulls the newest train
 > **challenges?**
 >
 > Answer length: 200-400 words.
->
-> Example:
-> *The biggest challenges in the project was using ... tool to do ... . The reason for this was ...*
->
 > Answer: 
 	
 The struggles were varied and touched on nearly all aspects of the project. The initial struggle was loading and formatting the data in the correct tensor format to fit the criteria of the model and make the batches append to the input tensors, the standard arrangement was that it created a list of tensors. This took some time, but once the correct format was in place, the training went well. Creating the source code took longer than expected but with the help of profilers and Pytorch Lightning, we managed to increase the transparency of the src code. Incorporating Pytorch Lightning also took some time due to the model predicting in lists but not tensors during the validation step of the Trainer. This could be fixed by using argmax and softmax functions from torch but not NumPy and sklearn as used in some tutorials of the course. Other than that implementation of the source code went well. 
@@ -561,12 +481,6 @@ In the cloud we had back down from letting the trigger be active since for some 
 > **make sure all members contributed actively to the project**
 >
 > Answer length: 50-200 words.
->
-> Example:
-> *Student sXXXXXX was in charge of developing of setting up the initial cookie cutter project and developing of the*
-> *docker containers for training our applications.*
-> *Student sXXXXXX was in charge of training our models in the cloud and deploying them afterwards.*
-> *All members contributed to code by...*
 >
 > Answer:
 
