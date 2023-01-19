@@ -357,7 +357,7 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 > *We used the compute engine to run our ... . We used instances with the following hardware: ... and we started the*
 > *using a custom container: ...*
 >
-> Answer:
+> Answer: We didn’t end up using the Compute Engine service to create any virtual machines for our project but we did use the Vertex AI service. We used Vertex AI to create custom jobs that were used to train our model. By creating custom jobs in Vertex AI, a virtual machine instance is automatically created which is then used to run the container specified at the job creation. The configuration for the custom job is stored in the config.yaml file in the root of our git repository. All custom jobs were created with machine type `n1-highmem-2` and used to run our custom `trainer` Docker container, which is stored in the Container Registry. A total of 10 custom job runs were created through Vertex AI.
 
 --- question 18 fill here ---
 
