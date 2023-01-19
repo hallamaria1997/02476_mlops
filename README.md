@@ -3,7 +3,7 @@
 *Sentiment Classification of Tweets*
 ==============================
 [![Code Tests](https://github.com/hallamaria1997/02476_mlops/actions/workflows/tests.yml/badge.svg)](https://github.com/hallamaria1997/02476_mlops/actions/workflows/tests.yml)
-[![codecov](https://codecov.io/gh/hallamaria1997/02476_mlops/tree/badge.svg?token=0cb3070a-2953-415e-9450-77c020eb9ac4)](https://codecov.io/gh/hallamaria1997/02476_mlops)
+[![Code Coverage](https://codecov.io/gh/hallamaria1997/02476_mlops/branch/main/graph/badge.svg?token=4RRR8LXD7Y)](https://codecov.io/gh/hallamaria1997/02476_mlops)
 [![isort](https://github.com/hallamaria1997/02476_mlops/actions/workflows/isort.yml/badge.svg)](https://github.com/hallamaria1997/02476_mlops/actions/workflows/isort.yml)
 [![flake8](https://github.com/hallamaria1997/02476_mlops/actions/workflows/flake8.yml/badge.svg)](https://github.com/hallamaria1997/02476_mlops/actions/workflows/flake8.yml)
 
