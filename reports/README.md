@@ -334,8 +334,6 @@ We use wandb to track each experiment.  We added the config from the experiment 
 > Answer:
 
 Accuracy and loss were the two metrics that we tracked throughout the training and validation processes. It is essential to track these metrics in order to determine whether or not our model is becoming more accurate. Because tracking just one metric at a time can give an inaccurate picture of the process, we need to look at both of them. We seek low loss while maintaining high accuracy. If the accuracy is high but the loss is also high, this indicates that the model is producing large errors for a relatively small portion of the data. On the other hand, if the loss is low but the accuracy is also low, this indicates that we are producing small errors for the majority of the data. It is necessary to state that we had a model that had been pretrained and had an early stopping method implemented; as a result, doing a last layer training or fine tuning will most likely not improve the model very much and has a high risk of overfitting.
-	
-	will not improve the model very much.
 
 ### Question 15
 
