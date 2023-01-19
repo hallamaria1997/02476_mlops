@@ -36,4 +36,6 @@ COPY models/ models/
 
 COPY src/API/main.py src/API/main.py
 
+WORKDIR /src/API/
+
 CMD exec uvicorn main:app --port $PORT --host 0.0.0.0 --workers 1
