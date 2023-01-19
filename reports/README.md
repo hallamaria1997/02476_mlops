@@ -402,7 +402,26 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 >
 > Answer:
 
---- question 22 fill here ---
+We did manage to deploy both the training process and the API. For training the model, we created and built a dockerfile locally and pushed it to the cloud. It was then deployed using Vertex AI.
+
+For the API, a dockerfile was built locally and pushed to the cloud, where it was deployed as a service in Cloud Run.
+
+The service has two endpoints: the root, which returns a message about the usage, and ``/predict/?tweet=<query string>``. The ``predict`` endpoint is invoked using either the curl command:
+
+	curl -X 'GET' \
+	  'https://twitter-sentiment-api-ptfj6iu6wa-ew.a.run.app/predict/?tweet=trying%20the%20twitter%20sentiment%20api' \
+	  -H 'accept: application/json'
+
+or with a request URL in browser:
+
+[https://twitter-sentiment-api-ptfj6iu6wa-ew.a.run.app/predict/?tweet=trying%20the%20twitter%20sentiment%20api](https://twitter-sentiment-api-ptfj6iu6wa-ew.a.run.app/predict/?tweet=trying%20the%20twitter%20sentiment%20api)
+
+It returns a JSON object containing the numeric id of the prediction and the string representation of the label (0=negative, 1=neutral, 2=positive). Example:
+	
+	{
+	  "pred_id": "1",
+	  "pred_label": "neutral"
+	}
 
 ### Question 23
 
