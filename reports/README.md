@@ -269,6 +269,7 @@ We used DVC for version control of our training and validation data as well as o
 > *... . In particular for our ..., we used ... .An example of a triggered workflow can be seen here: <weblink>*
 >
 > Answer: 
+	
 We are using three kinds of unit testing: We run functional tests on the code, formatting tests and import tests. 
       
 For the functional tests, we use the ``pytest`` package and run tests on the model, the data and the API. The model tests assert that the model uses the correct architecture and that it returns logits of the correct shape. The data tests make sure that the data loader returns the correct batch sizes, both for the train and test sets. The API tests are not used in the final revision because path issues made it more complicated, but they made sure that the endpoints worked as intended and returned the correct status codes, 200 for OK and 404 for not found. In addition, it asserted that the query tweet was saved to a file. The tests were marked with ``skipif`` if the path to the data or the checkpoint didn't exist.
@@ -295,10 +296,10 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 >
 > Answer: 
 
-To make it easier to configure our experiments, we used config files. Hydra is the configuration tool that we used; it keeps track of hyperparameters as well as wandb parameters. Each experiment file is located in the following folder: `src/models/config/experiment` and, in order to try out different experiments, the following must be typed into the terminal: 
+To make it easier to configure our experiments, we used config files. Hydra is the configuration tool that we used; it keeps track of hyperparameters as well as wandb parameters. Each experiment file is located in the following folder: `src/models/config/experiment` and, in order to try out different experiments, the training script must be executed with the `experiment` argument.
 
 ```bash
-python model train.py experiment=exp3
+$ python train_model.py experiment=exp3
 ```
 
 
