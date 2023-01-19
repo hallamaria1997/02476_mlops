@@ -96,7 +96,7 @@ Project Organization
     │   └── API            <- Scripts to create FastAPI
     │       └── main.py
     │       └── predictions.csv
-    ├── tests                <- 
+    ├── tests                <- Scripts for testing using pytest (pytest tests/)
     │   ├── __init__.py
     │   ├── _test_api.py
     │   ├── test_data.py
