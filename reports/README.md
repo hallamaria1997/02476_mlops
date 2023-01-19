@@ -560,4 +560,4 @@ In the cloud we had back down from letting the trigger be active since for some 
 >
 > Answer:
 
---- question 27 fill here ---
+Student s212963 worked on configuring hydfiles for experiments and logging them with W&B, was involved in setting up the model and improving the code by adding typing, and profiled the training. config
