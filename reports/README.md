@@ -565,3 +565,9 @@ In the cloud we had back down from letting the trigger be active since for some 
 Student s212963 worked on configuring hydra config files for experiments and logging them with W&B, was involved in setting up the model and improving the code by adding typing, and profiled the training. config
 
 Student s212951 was most involved in setting up the data version control with DVC, worked on creating the dockerfile used for the training runs, setting up the Cloud Build triggers and GCP data storage bucket as well as the Vertex AI training runs. Was also involved in the initial setup of the repository such as creating the data preprocessing script, dataloaders and the model training script.
+	
+Student sXXXXXX ....
+	
+Student sXXXXXX ....
+	
+Although the answer above lists each student's main contributions it is worth noting that all students contributed equally to the project and were involved in most, or all aspects of the project. 
