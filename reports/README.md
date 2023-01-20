@@ -292,6 +292,9 @@ We use wandb to track each experiment.  We added the config from the experiment 
 > Answer length: 200-300 words + 1 to 3 screenshots.
 > Answer:
 
+![WB_all](figures/W&B_all.png)
+![WB_best](figures/W&B_best.png)
+
 Accuracy and loss were the two metrics that we tracked throughout the training and validation processes. It is essential to track these metrics in order to determine whether or not our model is becoming more accurate. Because tracking just one metric at a time can give an inaccurate picture of the process, we need to look at both of them. We seek low loss while maintaining high accuracy. If the accuracy is high but the loss is also high, this indicates that the model is producing large errors for a relatively small portion of the data. On the other hand, if the loss is low but the accuracy is also low, this indicates that we are producing small errors for the majority of the data. It is necessary to state that we had a model that had been pre-trained and had an early stopping method implemented; as a result, doing a last layer training or fine tuning will most likely not improve the model very much and has a high risk of overfitting. 
 
 Additionally, some of the hyperparameters that were tuned using the hydra config files were tracked using W&B. The most valuable logging of hyperparameters proved to be the epochs logging as this allowed us to track the model's early stopping function to better understand each run.
