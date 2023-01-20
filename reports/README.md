@@ -103,20 +103,28 @@ end of the project.
 ### Question 1
 > **Enter the group number you signed up on <learn.inside.dtu.dk>**
 >
-> Answer: Awesome 10
+> Answer: 
+ 
+Awesome 10
 
 
 ### Question 2
 > **Enter the study number for each member in the group**
 >
-> Answer: s212963, s212958, s212951, s212957
+> Answer: 
+
+s212963, s212958, s212951, s212957
 
 ### Question 3
 > **What framework did you choose to work with and did it help you complete the project?**
 >
 > Answer length: 100-200 words.
 >
-> Answer: We used Transformers for our Twitter sentiment classification model. Transformers provides a pre-trained model called cardiffnlp/twitter-roberta-base-sentiment-latest which is trained to assess the sentiment of tweets. We used this model as our base and performed some training on the last layer with data from Kaggle. Transformers helped us a great deal with the documentation and tutorials for their specific models. We used the Transformers Tokenizer to cast each tweet to tensors of input id and attention mask. The input id creates a tensor that scores each word of the tweet and appends to a tensor and the attention mask is a tensor that indicates the importance of each word(0 or 1). We also used the Transformers Config of the model to cast labels between keys and values(0-neutral). Finally, we used Transformers AutoModelForSequenceClassification to provide a classification element to the output of the model, using 3 classes. Overall the framework reduced the time required to train an efficient model along with the methods of the model supplying necessary aspects for evaluating the model.
+> Answer: 
+
+We used Transformers for our Twitter sentiment classification model. Transformers provides a pre-trained model called cardiffnlp/twitter-roberta-base-sentiment-latest which is trained to assess the sentiment of tweets. We used this model as our base and performed some training on the last layer with data from Kaggle. 
+
+Transformers helped us a great deal with the documentation and tutorials for their specific models. We used the Transformers Tokenizer to cast each tweet to tensors of input id and attention mask. The input id creates a tensor that scores each word of the tweet and appends to a tensor and the attention mask is a tensor that indicates the importance of each word (0 or 1). We also used the Transformers Config of the model to cast labels between keys and values (0-neutral). Finally, we used Transformers AutoModelForSequenceClassification to provide a classification element to the output of the model, using 3 classes. We used Hydra to configure the trainer in pytorch lightning.  Overall the framework reduced the time required to train an efficient model along with the methods of the model supplying necessary aspects for evaluating the model.
 
 ## Coding environment
 
@@ -129,22 +137,21 @@ end of the project.
 >
 > Answer length: 100-200 words
 >
-> Example:
-> *We used ... for managing our dependencies. The list of dependencies was auto-generated using ... . To get a*
-> *complete copy of our development enviroment, one would have to run the following commands*
->
-> Answer: We used a Conda environment for managing our dependencies. A clean Conda environment was created in the beginning to keep track of all packages installed over the course of the project. To extract a list of dependencies, a requirements.txt file was generated using pipreqs. However, some package versions later needed to be manually changed to make sure they worked with Docker. A new member joining the project would simply have to execute the following commands to get a copy of the environment:
-> 
-> `$ git clone [https://github.com/hallamaria1997/02476_mlops.git]`
-> 
-> `$ dvc pull`
-> 
-> `$ pip install -e .`
->
-> This would provide the new member with the current versions of code files, data as well as all the packages needed to be able to run the code.
+> Answer: 
 
 
---- question 4 fill here ---
+We used a Conda environment for managing our dependencies. A clean Conda environment was created in the beginning to keep track of all packages installed over the course of the project. To extract a list of dependencies, a `requirements.txt` file was generated using `pipreqs`. However, some package versions later needed to be manually changed to make sure they worked with Docker. A new member joining the project would simply have to execute the following commands to get a copy of the environment:
+
+```bash
+$ git clone [https://github.com/hallamaria1997/02476_mlops.git]
+
+$ dvc pull
+
+$ pip install -e .
+```
+
+This would provide the new member with the current versions of code files, data as well as all the packages needed to be able to run the code.
+
 
 ### Question 5
 
@@ -152,13 +159,11 @@ end of the project.
 > **code. Did you fill out every folder or only a subset?**
 >
 > Answer length: 100-200 words
->
-> Example:
-> *From the cookiecutter template we have filled out the ... , ... and ... folder. We have removed the ... folder*
-> *because we did not use any ... in our project. We have added an ... folder that contains ... for running our*
-> *experiments.*
 > 
-> Answer: We initialized the git repo using cookiecutter template at the beginning of the project work. We did not manage to fill out every folder of the template but managed to make good use of the structure. We didn't use the notebooks, references nor docs folders but filled out entire or subsets of all other folders. We had to add .dvc/ folder for Data Version Control, .github/ folder to manage the workflows of Github, tests/ to write the unit tests on our source code and in the src/model/ folder we had to add a config folder to manage our experiments and the outputs from WandB. The overall structure of the code follows the standard format, source code is stored under src and the data is managed in the data folder through DVC. The model, training_model,  predict_model and load_data is all located in src/models and the model is saved under models/once the training is done.
+> Answer: 
+
+
+We initialized the git repo using cookiecutter template at the beginning of the project work. We did not manage to fill out every folder of the template but managed to make good use of the structure. We didn't use the notebooks, references nor docs folders but filled out entire or subsets of all other folders. We had to add `.dvc/` folder for Data Version Control, `.github/` folder to manage the workflows of Github, `tests/` to write the unit tests on our source code and in the `src/model/` folder we had to add a `config/` folder to manage our experiments and the outputs from WandB. The overall structure of the code follows the standard format, source code is stored under `src` and the data is managed in the `data` folder through DVC. The model, training_model,  predict_model and load_data is all located in `src/models` and the model is saved under `models/` once the training is done.
 
 ### Question 6
 
@@ -167,7 +172,10 @@ end of the project.
 >
 > Answer length: 50-100 words.
 >
-> Answer: We followed the implementation of isort and flake8 quality/format. Following coding standards in larger projects is important to make sure that all coders are following the same guideline, this ensures the maintenance of readability and consistency in the project. This is also important for the reproducibility of the code and can make it easier to debug and detect errors for someone that didn't write the code.
+> Answer: 
+
+
+We followed the `isort` and `flake8` quality/format styling. We also improved our code by typing it to make it easier to read.  Following coding standards in larger projects is important to make sure that all coders are following the same guideline, this ensures the maintenance of readability and consistency in the project. This is also important for the reproducibility of the code and can make it easier to debug and detect errors for someone that didn't write the code.
 
 ## Version control
 
@@ -179,12 +187,10 @@ end of the project.
 > **How many tests did you implement and what are they testing in your code?**
 >
 > Answer length: 50-100 words.
->
-> Example:
-> *In total we have implemented X tests. Primarily we are testing ... and ... as these the most critical parts of our*
-> *application but also ... .*
->
-> Answer: In total, we have implemented 6 tests. Primarily we were testing the data preprocessing and loading along with the model as it is crucial that our model is created correctly and fed data in the correct format. We tested the shape of the data given the batch size for both the training and validation. We also tested that a batch contains all labels. For the model, we tested that the model was created correctly by checking the type and that the output shape was correct given certain input shapes.
+> Answer: 
+
+
+In total, we have implemented 6 tests. Primarily we were testing the data preprocessing and loading along with the model as it is crucial that our model is created correctly and fed data in the correct format. We tested the shape of the data given the batch size for both the training and validation. We also tested that a batch contains all labels. For the model, we tested that the model was created correctly by checking the type and that the output shape was correct given certain input shapes.
 
 ### Question 8
 
@@ -193,11 +199,10 @@ end of the project.
 >
 > Answer length: 100-200 words.
 >
-> Example:
-> *The total code coverage of code is X%, which includes all our source code. We are far from 100% coverage of our **
-> *code and even if we were then...*
->
-> Answer: The total code coverage is 69% of our src code, the part that drags the percentage down is the training part. The data, model, and tests are covered 100% but the Pytorch Lighting Trainer module and therefore training process is not included in the coverage. The validation we needed for training is secured within the model tests where we check that the shape of the tensor outputted by the model is in balance with the input shape. Everything else should be covered by the Pytorch Lighting Trainer. Testing the input to output shapes within the model tests saves the resources required to load a training run and manages to test the shape mapping prerequisite for the training to be possible. It might have been nice to run a test that validates that the training loss decreases and accuracy increase over the training period but this is better managed using WandB. Even though we would have managed 100% coverage the training process would have to be closely monitored using WandB or other loggers.
+> Answer: 
+
+
+The total code coverage is 69% of our src code, the part that drags the percentage down is the training part. The data, model, and tests are covered 100% but the Pytorch Lighting Trainer module and therefore training process is not included in the coverage. The validation we needed for training is secured within the model tests where we check that the shape of the tensor outputted by the model is in balance with the input shape. Everything else should be covered by the Pytorch Lighting Trainer. Testing the input to output shapes within the model tests saves the resources required to load a training run and manages to test the shape mapping prerequisite for the training to be possible. It might have been nice to run a test that validates that the training loss decreases and accuracy increase over the training period but this is better managed using WandB. Even though we would have managed 100% coverage the training process would have to be closely monitored using WandB or other loggers.
 
 ### Question 9
 
@@ -206,11 +211,10 @@ end of the project.
 >
 > Answer length: 100-200 words.
 >
-> Example:
-> *We made use of both branches and PRs in our project. In our group, each member had an branch that they worked on in*
-> *addition to the main branch. To merge code we ...*
->
-> Answer: We did not make use of branches and pull requests in the workflow, as we weren't able to figure out and organise the branches from the beginning. On one instance, we branched out and merged using a pull request, but it was kind of confusing. Instead, we agreed on not working on the same files simultaneously and were cautious about pushing and pulling to avoid conflicts.
+> Answer: 
+
+
+We did not make use of branches and pull requests in the workflow, as we weren't able to figure out and organise the branches from the beginning. On one instance, we branched out and merged using a pull request, but it was kind of confusing. Instead, we agreed on not working on the same files simultaneously and were cautious about pushing and pulling to avoid conflicts.
 
 Using branches would have been helpful as each group member would have had their own branch and do their coding there, independent of the main branch. That way, each one could have pushed their changes to their own branch without having to worry about conflicts. To merge with the main branch, they would then have simply made a pull request that the other members would have to approve and that would have made it easier to resolve any conflicts on the main branch. If we were to do it again, we would make sure to have a clear workflow from the beginning where everyone would be working on their own branch, and using pull requests before merging to main.
 
@@ -220,12 +224,11 @@ Using branches would have been helpful as each group member would have had their
 > **control of your data. If no, explain a case where it would be beneficial to have version control of your data.**
 >
 > Answer length: 100-200 words.
->
-> Example:
-> *We did make use of DVC in the following way: ... . In the end it helped us in ... for controlling ... part of our*
-> *pipeline*
->
-> Answer: We used DVC for version control of our training and validation data. We used Google Cloud Buckets to store our data remotely and in the real-time runtime(when building our docker files) we called DVC to pull the data before performing training or using other aspects of the pipeline. Doing it like this we get version control on the data and minimize the image size generated when the docker file is run. This helped us minimize issues that had to do with the data accessing part of our pipeline when running in the cloud. Even though using version control for the data in a project implemented over a short period of time we were already considering altering the data a bit so when we reduced the data it came in handy to be using DVC.
+
+> Answer: 
+
+
+We used DVC for version control of our training and validation data as well as our trained models. We used Google Cloud Buckets to store our data remotely and in the real-time runtime (when building our Docker files) we called DVC to pull the data before performing training or using other aspects of the pipeline. Doing it like this we get version control on the data and minimize the image size generated when the Docker file is run. This helped us minimize issues that had to do with the data accessing part of our pipeline when running in the cloud. Even though using version control for the data in a project implemented over a short period of time we were already considering altering the data a bit so when we reduced the data it came in handy to be using DVC.
 
 ### Question 11
 
@@ -234,13 +237,11 @@ Using branches would have been helpful as each group member would have had their
 > **your github actions workflow.**
 >
 > Answer length: 200-300 words.
->
-> Example:
-> *We have organized our CI into 3 separate files: one for doing ..., one for running ... testing and one for running*
-> *... . In particular for our ..., we used ... .An example of a triggered workflow can be seen here: <weblink>*
->
-> Answer: We are using three kinds of unit testing: We run functional tests on the code, formatting tests and import tests. 
-      For the functional tests, we use the ``pytest`` package and run tests on the model, the data and the API. The model tests assert that the model uses the correct architecture and that it returns logits of the correct shape. The data tests make sure that the data loader returns the correct batch sizes, both for the train and test sets. The API tests are not used in the final revision because path issues made it more complicated, but they made sure that the endpoints worked as intended and returned the correct status codes, 200 for OK and 404 for not found. In addition, it asserted that the query tweet was saved to a file. The tests were marked with ``skipif`` if the path to the data or the checkpoint didn't exist.
+> Answer: 
+	
+We are using three kinds of unit testing: We run functional tests on the code, formatting tests and import tests. 
+      
+For the functional tests, we use the ``pytest`` package and run tests on the model, the data and the API. The model tests assert that the model uses the correct architecture and that it returns logits of the correct shape. The data tests make sure that the data loader returns the correct batch sizes, both for the train and test sets. The API tests are not used in the final revision because path issues made it more complicated, but they made sure that the endpoints worked as intended and returned the correct status codes, 200 for OK and 404 for not found. In addition, it asserted that the query tweet was saved to a file. The tests were marked with ``skipif`` if the path to the data or the checkpoint didn't exist.
 
 For the formatting tests, we use the library ``flake8``, that checks if the code is formatted according to the PEP8 style guide. It checks line length, whitespaces around operators and number of line breaks after classes and methods, among other checks.
 
@@ -262,7 +263,13 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 >
 > Answer length: 50-100 words.
 >
-> Answer: To make it easier to configure our experiments, we used config files. Hydra is the configuration tool that we used; it keeps track of hyperparameters as well as wandb parameters. Each experiment file is located in the following folder: src/models/config/experiment and, in order to try out different experiments, the following must be typed into the terminal: python model train.py experiment=exp3
+> Answer: 
+
+To make it easier to configure our experiments, we used config files. Hydra is the configuration tool that we used; it keeps track of hyperparameters as well as wandb parameters. Each experiment file is located in the following folder: `src/models/config/experiment` and, in order to try out different experiments, the training script must be executed with the `experiment` argument.
+
+```bash
+$ python train_model.py experiment=exp3
+```
 
 
 ### Question 13
@@ -271,12 +278,9 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 > **is lost when running experiments and that your experiments are reproducible?**
 >
 > Answer length: 100-200 words.
->
-> Example:
-> *We made use of config files. Whenever an experiment is run the following happens: ... . To reproduce an experiment*
-> *one would have to do ...*
->
-> Answer: We use wandb to track each experiment.  We added the config from the experiment yaml file for each experiment to the wandb initialize. We know which hyperparameters and wandb parameters were used when training the model because wandb generates an output config file containing the hyperparameters and wandb parameters used. To reproduce an experiment, navigate to the src/models/outputs folder and select the experiment you want to run. There is a folder named files for each run that contains the config file. That file contains the necessary information; one would need to look at the value in the _parent section, copy the value, and create a new yaml experiment file in src/models/config/experiment.
+> Answer: 
+
+We use wandb to track each experiment.  We added the config from the experiment yaml file for each experiment to the wandb initialize. We know which hyperparameters and wandb parameters were used when training the model because wandb generates an output config file containing the hyperparameters and wandb parameters used. To reproduce an experiment, navigate to the `src/models/outputs` folder and select the experiment you want to run. There is a folder named files for each run that contains the config file. That file contains the necessary information; one would need to look at the value in the `_parent` section, copy the value, and create a new yaml experiment file in `src/models/config/experiment`.
 
 ### Question 14
 
@@ -286,14 +290,14 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 > **important.**
 >
 > Answer length: 200-300 words + 1 to 3 screenshots.
->
-> Example:
-> *As seen in the first image when have tracked ... and ... which both inform us about ... in our experiments.*
-> *As seen in the second image we are also tracking ... and ...*
->
 > Answer:
 
---- question 14 fill here ---
+![WB_all](figures/W&B_all.png)
+![WB_best](figures/W&B_best.png)
+
+Accuracy and loss were the two metrics that we tracked throughout the training and validation processes. It is essential to track these metrics in order to determine whether or not our model is becoming more accurate. Because tracking just one metric at a time can give an inaccurate picture of the process, we need to look at both of them. We seek low loss while maintaining high accuracy. If the accuracy is high but the loss is also high, this indicates that the model is producing large errors for a relatively small portion of the data. On the other hand, if the loss is low but the accuracy is also low, this indicates that we are producing small errors for the majority of the data. It is necessary to state that we had a model that had been pre-trained and had an early stopping method implemented; as a result, doing a last layer training or fine tuning will most likely not improve the model very much and has a high risk of overfitting. 
+
+Additionally, some of the hyperparameters that were tuned using the hydra config files were tracked using W&B. The most valuable logging of hyperparameters proved to be the epochs logging as this allowed us to track the model's early stopping function to better understand each run.
 
 ### Question 15
 
@@ -302,17 +306,16 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 >
 > Answer length: 100-200 words.
 >
-> Example:
-> *For our project we developed several images: one for training, inference and deployment. For example to run the*
-> *training docker image: `docker run trainer:latest lr=1e-3 batch_size=64`. Link to docker file: <weblink>*
->
-> Answer: We used Docker for a few different tasks in this project. We created a training image that is used to run a container that we can then use to train the model. We also created a deployment image that was used to as a part of the FastAPI used in the Cloud Run setup. Additionally, we created a prediction image that could be used to make a prediction container for the model but decided to only include the deployment image since both images were being used to make the same predictions. Running our docker images is very straight forward as they take in very few additional arguments. To run the training image with the hydra config file `exp4.yaml` you would only need to run the following commands:
->
-> `$ docker pull gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer:latest`
->    
-> `$ docker run --name <container_name> gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer:latest experiment=exp4`
+> Answer: 
+	
 
---- question 15 fill here ---
+We used Docker for a few different tasks in this project. We created a training image that is used to run a container that we can then use to train the model. We also created a deployment image that was used to as a part of the FastAPI used in the Cloud Run setup. Additionally, we created a prediction image that could be used to make a prediction container for the model but decided to only include the deployment image since both images were being used to make the same predictions. Running our docker images is very straight forward as they take in very few additional arguments. To run the training image with the hydra config file `exp4.yaml` you would only need to run the following commands:
+
+```bash
+$ docker pull gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer:latest
+   
+$ docker run --name <container_name> gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer:latest experiment=exp4
+```
 
 ### Question 16
 
@@ -321,13 +324,10 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 >
 > Answer length: 100-200 words.
 >
-> Example:
-> *Debugging method was dependent on group member. Some just used ... and others used ... . We did a single profiling*
-> *run of our main code at some point that showed ...*
->
-> Answer: In most cases, when we came across some issues, we were able to solve them by looking into what the error message said in the terminal and using Google to find answers to our questions. We didn't use the python debugger since we didn't feel like we needed it. When profiling our model, we relied on the SimpleProfiler that is included in the pytorch lightning profiler package. Both the activities that consumed the majority of the running time and the total number of calls made logical sense. It's possible that we could have done more to optimize the code, but after using pytorch lighting, we feel like the results are a lot more satisfying.
+> Answer: 
 
---- question 16 fill here ---
+
+In most cases, when we came across some issues, we were able to solve them by looking into what the error message said in the terminal and using Google to find answers to our questions. We didn't use the python debugger since we didn't feel like we needed it. When profiling our model, we relied on the `SimpleProfiler` that is included in the pytorch lightning profiler package. Both the activities that consumed the majority of the running time and the total number of calls made logical sense. It's possible that we could have done more to optimize the code, but after using pytorch lighting, we feel like the results are a lot more satisfying.
 
 ## Working in the cloud
 
@@ -338,13 +338,10 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 > **List all the GCP services that you made use of in your project and shortly explain what each service does?**
 >
 > Answer length: 50-200 words.
->
-> Example:
-> *We used the following two services: Engine and Bucket. Engine is used for... and Bucket is used for...*
->
-> Answer: The GCP services we used for our project were Bucket, Vertex AI, Cloud Build, Container Registry and Cloud Run. We used Buckets to store our data and linked the Buckets to our GitHub repository for data version control. The Vertex AI was used to perform training runs to train the model, the Cloud Build was linked to the Github repository to automatically build docker images and the Container Registry was used to store these images. Finally, the Cloud Run was used to deploy our FastAPI application.
-
---- question 17 fill here ---
+> Answer: 
+	
+	
+The GCP services we used for our project were `Bucket`, `Vertex AI`, `Cloud Build`, `Container Registry` and `Cloud Run`. We used Buckets to store our data and linked the Buckets to our GitHub repository for data version control. The Vertex AI was used to perform training runs to train the model, the Cloud Build was linked to the Github repository to automatically build docker images and the Container Registry was used to store these images. Finally, the Cloud Run was used to deploy our `FastAPI` application.
 
 ### Question 18
 
@@ -352,14 +349,10 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 > **you used?**
 >
 > Answer length: 100-200 words.
->
-> Example:
-> *We used the compute engine to run our ... . We used instances with the following hardware: ... and we started the*
-> *using a custom container: ...*
->
-> Answer:
+> Answer: 
+	
 
---- question 18 fill here ---
+We didn’t end up using the Compute Engine service to create any virtual machines for our project but we did use the `Vertex AI` service. We used Vertex AI to create custom jobs that were used to train our model. By creating custom jobs in Vertex AI, a virtual machine instance is automatically created which is then used to run the container specified at the job creation. The configuration for the custom job is stored in the config.yaml file in the root of our git repository. All custom jobs were created with machine type `n1-highmem-2` and used to run our custom `trainer` Docker container, which is stored in the Container Registry. A total of 10 custom job runs were created through Vertex AI.
 
 ### Question 19
 
@@ -367,8 +360,9 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 > **You can take inspiration from [this figure](figures/bucket.png).**
 >
 > Answer:
-
---- question 19 fill here ---
+	
+![buckets](figures/buckets.png)
+![bucket_content](figures/bucket_content.png)
 
 ### Question 20
 
@@ -377,7 +371,7 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 >
 > Answer:
 
---- question 20 fill here ---
+![container_registry1](figures/container_registry1.png)
 
 ### Question 21
 
@@ -385,8 +379,11 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 > **your project. You can take inspiration from [this figure](figures/build.png).**
 >
 > Answer:
+	
+![build_history](figures/build_history.png)
 
---- question 21 fill here ---
+As you can see from the figure above, the cloud build triggers were working while the data was still stored in the GitHub repository. However, once the DVC was completed and integrated into the project the builds started failing. The reason for this is that when built in a Cloud Build trigger, the dvc pull part of the dockerfile times out. We looked into this along with Nicki through a Slack thread but no solution was found. One other group had faced the same issue and fixed it by mounting the data from a gcp bucket. However, that would have meant giving up data version controlling which we decided against.
+
 
 ### Question 22
 
@@ -394,11 +391,6 @@ The functional tests are run on ubuntu-latest, macos-latest and windows-latest, 
 > **preferably how you invoke your deployed service?**
 >
 > Answer length: 100-200 words.
->
-> Example:
-> *For deployment we wrapped our model into application using ... . We first tried locally serving the model, which*
-> *worked. Afterwards we deployed it in the cloud, using ... . To invoke the service an user would call*
-> *`curl -X POST -F "file=@file.json"<weburl>`*
 >
 > Answer:
 
@@ -430,13 +422,13 @@ It returns a JSON object containing the numeric id of the prediction and the str
 >
 > Answer length: 100-200 words.
 >
-> Example:
-> *We did not manage to implement monitoring. We would like to have monitoring implemented such that over time we could*
-> *measure ... and ... that would inform us about this ... behaviour of our application.*
->
 > Answer:
 
---- question 23 fill here ---
+We did not set up monitoring of the system beyond what comes with Google Cloud. 
+
+It might have been beneficial to implement some monitoring to detect data drifting. It could help us identify if the distribution of the incoming data started drifting away from the distribution of the data the model was trained on. In our case, the input data is textual which makes its distribution more complicated to profile. We could instead watch out for data drifting in the output classes, but that might give us very limited information. 
+
+There are some built-in monitoring tools in the cloud for the service. For example, it keeps track of the number of incoming requests and usage of resources. For now, we only get a very limited number of requests, but for future tasks, it is very important to keep track of this as Google Cloud charges for each request excessing the free limit. Similarly, we are charged for the usage of resources (CPU, GPU etc) and thus it is important to watch out for that in order to figure how much resources we need and adjust it according to what we are willing to pay.
 
 ### Question 24
 
@@ -444,13 +436,9 @@ It returns a JSON object containing the numeric id of the prediction and the str
 >
 > Answer length: 25-100 words.
 >
-> Example:
-> *Group member 1 used ..., Group member 2 used ..., in total ... credits was spend during development. The service*
-> *costing the most was ... due to ...*
->
 > Answer:
 
---- question 24 fill here ---
+Group member s212963 used `17.51` credits, group member s212958 used `30.78` credits, group member s212951 used `15.2` credits and group member s212957  used `50` credits, in total  credits was spent during development. The service deployment is free for the first 50 hours so that didn‘t start to take down our credits. The service that ended up costing the most was having Virtual Machine Instances running.
 
 ## Overall discussion of project
 
@@ -464,14 +452,17 @@ It returns a JSON object containing the numeric id of the prediction and the str
 >
 > Answer length: 200-400 words
 >
-> Example:
->
-> *The starting point of the diagram is our local setup, where we integrated ... and ... and ... into our code.*
-> *Whenever we commit code and puch to github, it auto triggers ... and ... . From there the diagram shows ...*
->
 > Answer:
 
---- question 25 fill here ---
+![Architecture](figures/Architecture.png)
+
+The following image describes the architecture of our project. It initiates at the far right with our local setup. The local setup was constructed using Cookiecutter. We used transformers and Pytorch to build our model and Trainer from Pytorch Lightning to train the model. To configure each training experiment we used Hydra and to log the runs and visual outputs we made use of WandB. The data was stored locally within the data folder and we used Conda for dependency control. Our source code consisted of model.py, train_model.py, load_data.py, make_dataset.py, and predict_model.py. The last one was used to classify new user input (tweets) through the FastAPI service, it uses the trained model (stored in models/ as a .pth file) to predict. We implemented two Dockerfiles locally, one for the training run and another for the FastAPI service. Since the training run used the train and validation data stored locally in the data/ folder and outputted the trained model file to models/ and the FastAPI depends on that we had to set up DVC both for the models/ and data/ folders. We used two different GCP buckets, one for the data and another for the trained model. 
+
+Whenever code is pushed to the git repo our continuous integration runs tests on our code described in question 11 (unit tests, formatting tests, code coverage, and package sorting), it also auto triggers a cloud build of the docker files in the repository and stores in the Container Registry. The triggers started failing after we started using DVC rather than mounting out data and since we didn't want to give up DVC we manually pushed built images to GCP for deployment usage. We have two built images, one for the training run and another for the FastAPI service.
+
+The training run was deployed using Vertex AI. The run pulls data from the data/ GCP bucket, trains the model and outputs a `.pth` file of the trained model. Training run stats can be viewed within the Vertex AI module and everything is logged to WandB. Once the training run is finished we can use the trained model for the FastAPI.
+
+The FastAPI service was deployed in a Cloud Run. The code pulls the newest trained model from the model GCP bucket and uses it to classify user inputs as neutral, negative, or, positive, using the predict_model.py script.
 
 ### Question 26
 
@@ -479,17 +470,13 @@ It returns a JSON object containing the numeric id of the prediction and the str
 > **challenges?**
 >
 > Answer length: 200-400 words.
->
-> Example:
-> *The biggest challenges in the project was using ... tool to do ... . The reason for this was ...*
->
-> Answer: The struggles were varied and touched on nearly all aspects of the project. The initial struggle was loading and formatting the data in the correct tensor format to fit the criteria of the model and make the batches append to the input tensors, the standard arrangement was that it created a list of tensors. This took some time, but once the correct format was in place, the training went well. Creating the source code took longer than expected but with the help of profilers and Pytorch Lightning, we managed to increase the transparency of the src code. Incorporating Pytorch Lightning also took some time due to the model predicting in lists but not tensors during the validation step of the Trainer. This could be fixed by using argmax and softmax functions from torch but not NumPy and sklearn as used in some tutorials of the course. Other than that implementation of the source code went well. 
+> Answer: 
+	
+The struggles were varied and touched on nearly all aspects of the project. The initial struggle was loading and formatting the data in the correct tensor format to fit the criteria of the model and make the batches append to the input tensors, the standard arrangement was that it created a list of tensors. This took some time, but once the correct format was in place, the training went well. Creating the source code took longer than expected but with the help of profilers and Pytorch Lightning, we managed to increase the transparency of the src code. Incorporating Pytorch Lightning also took some time due to the model predicting in lists but not tensors during the validation step of the Trainer. This could be fixed by using argmax and softmax functions from torch but not NumPy and sklearn as used in some tutorials of the course. Other than that implementation of the source code went well. 
 
-We had some issues with docker, to start off accessing data using DVC in docker files was causing major issues. Building both the docker image for the training and API required many tries also due to DVC issues. We had to work with multiple buckets to store data(one for training and another that stored the trained model for testing) this required some customization of the setup in the docker file. 
+We had some issues with Docker, to start off accessing data using DVC in Docker files was causing major issues. Building both the Docker image for the training and API required many tries also due to DVC issues. We had to work with multiple buckets to store data (one for training and another that stored the trained model for testing) this required some customization of the setup in the Docker file. 
 
-In the cloud we had back down from letting the trigger be active since for some unknown reasons would get stuck at DVC pull, we debugged and tried a lot of fixes(also consulting Nicki and TAs) out for an entire day but nothing seemed to work unless we would give up DVC which we did not want to do. Getting VertexAI to run in the cloud did not go smoothly due to conflicts between the Pytorch Lightning logger and Vertex AI logs, this was fixed by removing the progress bars of Lightning loggers.
-
---- question 26 fill here ---
+In the cloud we had back down from letting the trigger be active since for some unknown reasons would get stuck at DVC pull, we debugged and tried a lot of fixes (also consulting Nicki and TAs) out for an entire day but nothing seemed to work unless we would give up DVC which we did not want to do. Getting Vertex AI to run in the cloud did not go smoothly due to conflicts between the Pytorch Lightning logger and Vertex AI logs, this was fixed by removing the progress bars of Lightning loggers.
 
 ### Question 27
 
@@ -498,12 +485,15 @@ In the cloud we had back down from letting the trigger be active since for some 
 >
 > Answer length: 50-200 words.
 >
-> Example:
-> *Student sXXXXXX was in charge of developing of setting up the initial cookie cutter project and developing of the*
-> *docker containers for training our applications.*
-> *Student sXXXXXX was in charge of training our models in the cloud and deploying them afterwards.*
-> *All members contributed to code by...*
->
 > Answer:
 
---- question 27 fill here ---
+Student s212963 worked on configuring hydra config files for experiments and logging them with W&B, was involved in coding the transformers model structure, training process and integration to Pytorch Lightning Trainer and improving the code by adding typing, and profiled the training. 
+
+Student s212951 set up DVC, the dockerfile for training runs, Cloud Build triggers, GCP data storage bucket, and Vertex AI training runs. Created data preprocessing, dataloaders, and model training scripts for repository setup.
+
+Student s212958 coded the transformers model structure (model.py), training process and integration to Pytorch Lightning Trainer (train model.py), and data fetching and formatting (load dataset.py). implememted unit tests and configured flake8, coverage and isort tests for the continuous integration of the project Created the FastAPI docker image and deployed it using Cloud Run in GCP.
+
+Student s212957 implemented a FastAPI service to run predict model.py on the latest trained model in the source code. Built the FastAPI dockerfile with s212958. Was responsible for deploying the FastAPI service using Cloud Run in GCP. 
+
+The answer above lists each student's main contributions, but all students contributed equally and were involved in most or all aspects of the project.
+

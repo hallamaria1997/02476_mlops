@@ -5,3 +5,4 @@ workerPoolSpecs:
    replicaCount: 1
    containerSpec:
       imageUri: gcr.io/dtumlops-tweet-sentiment/github.com/hallamaria1997/02476_mlops/trainer:latest
+      args: [experiment=exp6]

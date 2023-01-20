@@ -10,8 +10,6 @@ RUN apt update && \
 
 # copying essential parts into container
 
-ENV WANDB_API_KEY=7d204c49a07b176284f3f17500c2f6081c919c75
-
 COPY requirements.txt requirements.txt
 
 COPY setup.py setup.py
@@ -26,6 +24,13 @@ COPY reports/ reports/
 
 COPY models/ models/
 
+COPY keys/ keys/
+
+# setting environment variables
+
+ENV WANDB_API_KEY=7d204c49a07b176284f3f17500c2f6081c919c75
+ENV GOOGLE_APPLICATION_CREDENTIALS=/keys/dtumlops-tweet-sentiment-f74832ed9b30.json
+
 # setting working directory
 
 WORKDIR /
@@ -36,9 +41,10 @@ RUN pip install dvc 'dvc[gs]'
 RUN dvc init --no-scm
 RUN dvc remote add -d myremote gs://dtumlops-twitter-sentiment-data/
 
-RUN dvc pull -v
+RUN dvc pull -v 
 COPY data/ data/
 
 # naming as entrypoint
 
-ENTRYPOINT ["python", "-u", "src/models/train_model.py", "experiment=exp3"]
+ENTRYPOINT ["python", "-u", "src/models/train_model.py"]
+CMD ["experiment=exp3"]
